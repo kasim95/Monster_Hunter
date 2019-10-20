@@ -13,18 +13,126 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Monster">
+      <UniqueIdentifier>{17bc6f64-59b5-49e8-bd92-a61bf19a3c6b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Character">
+      <UniqueIdentifier>{9661c87e-b731-4a64-8f41-86de3e6a31d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Game">
+      <UniqueIdentifier>{f83b1058-67e5-4644-8f86-2a27a9caa6e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\ConsoleUI.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\UserInterfaceHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\Logging\LoggerHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\Logging\SimpleLogger.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\Persistence\PersistenceHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\Persistence\SimpleDB.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\PaymentHandler\PaymentHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Shop\Item.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Shop\Shop.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\AccountManagement\AccountManagement.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\AccountManagement\UserAccounts.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Dragon.hpp">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Goblin.hpp">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Golem.hpp">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Orc.hpp">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Monster.hpp">
+      <Filter>Monster</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Mage.hpp">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Assassin.hpp">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Warrior.hpp">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Character.hpp">
+      <Filter>Character</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Game.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Battle.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\Map.hpp">
+      <Filter>Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="pch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Monster_Hunter.cpp">
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\ConsoleUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TechnicalServices\Persistence\SimpleDB.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TechnicalServices\PaymentHandler\PaymentHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Shop\Shop.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\AccountManagement\UserAccounts.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Game\Monster.cpp">
+      <Filter>Monster</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Game\Character.cpp">
+      <Filter>Character</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Game\Battle.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Game\Map.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Domain\Game\Game.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
