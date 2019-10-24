@@ -24,9 +24,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="pch.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="UI\ConsoleUI.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -87,20 +84,17 @@
     <ClInclude Include="Domain\Game\Character.hpp">
       <Filter>Character</Filter>
     </ClInclude>
-    <ClInclude Include="Domain\Game\Game.hpp">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Domain\Game\Battle.hpp">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Domain\Game\Map.hpp">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="Domain\Game\GameSession.hpp">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="pch.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -131,7 +125,7 @@
     <ClCompile Include="Domain\Game\Map.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="Domain\Game\Game.cpp">
+    <ClCompile Include="Domain\Game\GameSession.cpp">
       <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>

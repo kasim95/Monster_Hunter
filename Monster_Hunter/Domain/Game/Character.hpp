@@ -31,7 +31,7 @@ public:
 	int get_max_health();
 	void set_max_health(const int value);
 	int get_current_health();
-	void set_max_health(const int value);
+	void set_current_health(const int value);
 	int get_potion();
 	void set_potion(const int value);
 	int get_base_damage();

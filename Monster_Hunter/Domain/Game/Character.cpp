@@ -17,6 +17,7 @@ void Character::gain_Attribute(int value, int value_health)
 {
 	attributes += value;
 	max_health += value_health;
+	calculate_damage();
 }
 
 void Character::equip_Weapon(int wa, std::string wn)
@@ -51,7 +52,7 @@ int Character::get_current_health()
 	return current_health;
 }
 
-void Character::set_max_health(const int value)
+void Character::set_current_health(const int value)
 {
 	current_health = value;
 }
