@@ -3,10 +3,24 @@
 
 //#include "pch.h"
 #include <iostream>
+#include <array>
+#include <string>
+#include "Domain/Game/Map.hpp"
 
 int main()
 {
     std::cout << "Hello World!\n"; 
+	Map z;
+	std::array<std::array<std::string, 30>, 15> _map = z.get_map();
+	for (int i = 0; i < 15; ++i)
+	{
+		for (int j = 0; j < 30; ++j)
+		{
+			std::cout << _map[i][j];
+		}
+		std::cout << std::endl;
+	}
+	return 0;
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
