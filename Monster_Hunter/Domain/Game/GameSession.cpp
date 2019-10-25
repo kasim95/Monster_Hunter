@@ -4,8 +4,8 @@
 
 GameSession::GameSession()
 {
-	Assassin player_character;
-	player_character.calculate_damage();
+	Character* player_character = new Assassin();
+	player_character->calculate_damage();
 	time1 = clock();
 	time2 = time1;
 }
@@ -13,6 +13,9 @@ GameSession::GameSession()
 GameSession::GameSession(Character * selected_character)
 {
 	player_character = selected_character;
+	player_character->calculate_damage();
+	time1 = clock();
+	time2 = time1;
 }
 
 bool GameSession::usePotion()
@@ -28,8 +31,8 @@ bool GameSession::usePotion()
 
 void GameSession::heal_using_campfire()
 {
-	int max_health = player_character->get_max_health();
-	int curr_health = player_character->get_current_health();
+	double max_health = player_character->get_max_health();
+	double curr_health = player_character->get_current_health();
 	while (curr_health < max_health)
 	{
 		curr_health += max_health * 0.1;
@@ -117,10 +120,28 @@ bool GameSession::end_game()
 double GameSession::calculate_score()
 {
 	double elapsed_secs = double(time2 - time1);
+	//enter formula to calculate score
 	return elapsed_secs;
 }
 
 std::array<std::array<std::string, 30>, 15> GameSession::return_map()
 {
 	return map.get_map();
+}
+
+bool GameSession::equip_weapon(int weapon_attributes)
+{
+	player_character->set_weapon_attributes(weapon_attributes);
+	player_character->calculate_damage();
+	return true;
+}
+
+int GameSession::get_player_damage()
+{
+	return player_character->get_damage();
+}
+
+int GameSession::get_player_health_percentage()
+{
+	return (player_character->get_current_health() * 100) / (player_character->get_max_health());
 }

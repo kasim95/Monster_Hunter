@@ -125,6 +125,20 @@ void test_gamesession_move_character()
 	
 }
 
+void test_gamesession_select_character()
+{
+	Warrior warrior;
+	GameSession gamesess(&warrior);
+}
+
+void test_game_equip_weapon()
+{
+	GameSession gamesess;
+	std::cout << "\nearlier damage is " << gamesess.get_player_damage();
+	gamesess.equip_weapon(100);
+	std::cout << "\nequipped weapon damage is " << gamesess.get_player_damage();
+
+}
 
 int main()
 {
@@ -133,7 +147,9 @@ int main()
 //	test_assassin();
 //	test_warrior();
 //	test_mage();
-	test_gamesession_move_character();
+//	test_gamesession_move_character();
+//	test_gamesession_select_character();
+	test_game_equip_weapon();
 	return 0;
 }
 

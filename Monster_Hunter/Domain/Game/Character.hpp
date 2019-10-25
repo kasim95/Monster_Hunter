@@ -7,8 +7,8 @@ class Character
 {
 protected:
 	int attributes;
-	int max_health;
-	int current_health;
+	double max_health;
+	double current_health;
 	int potion;
 	int base_damage;
 	int damage;
@@ -28,10 +28,10 @@ public:
 	virtual void calculate_damage() = 0;
 	int get_attributes();
 	void set_attributes(const int value);
-	int get_max_health();
-	void set_max_health(const int value);
-	int get_current_health();
-	void set_current_health(const int value);
+	double get_max_health();
+	void set_max_health(const double value);
+	double get_current_health();
+	void set_current_health(const double value);
 	int get_potion();
 	void set_potion(const int value);
 	int get_base_damage();

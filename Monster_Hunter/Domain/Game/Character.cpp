@@ -38,22 +38,22 @@ void Character::set_attributes(const int value)
 	attributes = value;
 }
 
-int Character::get_max_health()
+double Character::get_max_health()
 {
 	return max_health;
 }
 
-void Character::set_max_health(const int value)
+void Character::set_max_health(const double value)
 {
 	max_health = value;
 }
 
-int Character::get_current_health()
+double Character::get_current_health()
 {
 	return current_health;
 }
 
-void Character::set_current_health(const int value)
+void Character::set_current_health(const double value)
 {
 	current_health = value;
 }
