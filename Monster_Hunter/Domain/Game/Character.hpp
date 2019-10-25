@@ -22,7 +22,7 @@ public:
 	Character();
 	Character(const Character & original) = default;	//Copy const
 	Character(Character && original) = default;			//Move Constructor can be removed later
-	virtual ~Character() noexcept = 0;					//Virtual Destructor
+	~Character() = default;					//Virtual Destructor
 	void gain_Attribute(int value, int value_health);
 	void equip_Weapon(int wa, std::string wn);
 	virtual void calculate_damage() = 0;

@@ -6,6 +6,10 @@
 #include <array>
 #include <string>
 #include "Domain/Game/Map.hpp"
+#include "Domain/Game/Assassin.hpp"
+#include "Domain/Game/Warrior.hpp"
+#include "Domain/Game/Mage.hpp"
+#include "Domain/Game/GameSession.hpp"
 
 void test_map()
 {
@@ -21,10 +25,115 @@ void test_map()
 	}
 }
 
+void test_assassin()
+{
+	Assassin assassin;
+	std::cout << "\nAssassin's Base Damage is " << assassin.get_damage();
+	assassin.calculate_damage();
+	std::cout << "\nAssassin's Damage is " << assassin.get_damage();
+}
+
+void test_warrior()
+{
+	Warrior warrior;
+	std::cout << "\nWarrior's Base Damage is " << warrior.get_damage();
+	warrior.calculate_damage();
+	std::cout << "\nWarrior's Damage is " << warrior.get_damage();
+}
+
+void test_mage()
+{
+	Mage mage;
+	std::cout << "\nMage's Base Damage is " << mage.get_damage();
+	mage.calculate_damage();
+	std::cout << "\nMage's Damage is " << mage.get_damage();
+}
+
+void test_gamesession_move_character()
+{
+	std::array<std::array<std::string, 30>, 15> _map;
+	GameSession gamesess;
+	//std::cout << gamesess.usePotion();
+	int x = 0;
+	//move right twice
+	std::cout << "\n\n\nmoving right twice\n";
+	gamesess.move_character(3);
+	gamesess.move_character(3);
+	_map = gamesess.return_map();
+	for (int i = 0; i < 15; ++i)
+	{
+		for (int j = 0; j < 30; ++j)
+		{
+			std::cout << _map[i][j];
+		}
+		std::cout << std::endl;
+	}
+
+	//move left once
+	std::cout << "\n\n\nmoving left once\n";
+	gamesess.move_character(1);
+	_map = gamesess.return_map();
+	for (int i = 0; i < 15; ++i)
+	{
+		for (int j = 0; j < 30; ++j)
+		{
+			std::cout << _map[i][j];
+		}
+		std::cout << std::endl;
+	}
+	
+	//move top 15 times
+	std::cout << "\n\n\nmoving top 15 times\n";
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+	gamesess.move_character(4);
+
+	_map = gamesess.return_map();
+	for (int i = 0; i < 15; ++i)
+	{
+		for (int j = 0; j < 30; ++j)
+		{
+			std::cout << _map[i][j];
+		}
+		std::cout << std::endl;
+	}
+
+	//move bottom once
+	std::cout << "\n\nmoving bottom once\n";
+	gamesess.move_character(2);
+	_map = gamesess.return_map();
+	for (int i = 0; i < 15; ++i)
+	{
+		for (int j = 0; j < 30; ++j)
+		{
+			std::cout << _map[i][j];
+		}
+		std::cout << std::endl;
+	}
+	
+}
+
+
 int main()
 {
     std::cout << "Hello World!\n"; 
-	test_map();
+//	test_map();
+//	test_assassin();
+//	test_warrior();
+//	test_mage();
+	test_gamesession_move_character();
 	return 0;
 }
 

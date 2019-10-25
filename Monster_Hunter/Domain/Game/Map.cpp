@@ -82,11 +82,17 @@ void Map::draw_map(std::array<int, 2> curr_player_pos)
 	_map[previous_char_pos[0]][previous_char_pos[1]] = previous_char;
 	previous_char = _map[curr_player_pos[0]][curr_player_pos[1]];
 	_map[curr_player_pos[0]][curr_player_pos[1]] = '@';
+	previous_char_pos = curr_player_pos;
 }
 
 std::array<int, 2> Map::get_previous_char_pos()
 {
 	return previous_char_pos;
+}
+
+void Map::set_previous_char_pos(std::array<int, 2> value)
+{
+
 }
 
 std::array<std::array<std::string, 30>, 15> Map::get_map()

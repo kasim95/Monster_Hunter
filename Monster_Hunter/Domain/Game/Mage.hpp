@@ -5,14 +5,16 @@ class Mage : public Character
 {
 public:
 	void calculate_damage() override;
-	~Mage() noexcept override;
+	//~Mage() noexcept override;
 	void set_image() override;
 };
 
 
 //Inline implementation
+/*
 inline Mage::~Mage() noexcept
 {}
+*/
 
 inline void Mage::calculate_damage()
 {

@@ -1,5 +1,6 @@
 #pragma once
 #include <array>
+#include <ctime>
 #include "Character.hpp"
 #include "Assassin.hpp"
 #include "Warrior.hpp"
@@ -8,6 +9,7 @@
 #include "Orc.hpp"
 #include "Golem.hpp"
 #include "Dragon.hpp"
+#include "Map.hpp"
 
 class GameSession
 {
@@ -18,10 +20,18 @@ private:
 	//Orc medium_monster;
 	//Golem strong_monster;
 	//Dragon dragon_monster;
-
+	Map map;
+	clock_t time1;
+	clock_t time2;
 public:
 	GameSession();
-	~GameSession();
+	GameSession(Character* selected_character);
+	~GameSession() = default;
 	bool usePotion();
 	void heal_using_campfire();
+	void move_character(int direction); //1 for left, 2 for bottom, 3 for right, 4 for top
+	void fight(int monster_type);
+	bool end_game();
+	double calculate_score();
+	std::array<std::array<std::string, 30>, 15> return_map();
 };

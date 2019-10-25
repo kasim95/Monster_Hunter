@@ -5,14 +5,16 @@ class Assassin : public Character
 {
 public:
 	void calculate_damage() override;
-	~Assassin() noexcept override;
+	//~Assassin() noexcept override;
 	void set_image() override;
 };
 
 
 //Inline implementation
+/*
 inline Assassin::~Assassin() noexcept
 {}
+*/
 
 inline void Assassin::calculate_damage()
 {

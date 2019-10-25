@@ -5,12 +5,13 @@ Character::Character()
 {
 	name = "NA";
 	weapon_name = "NA";
-	attributes = 1;
+	attributes = 9;
 	max_health = 50;
 	current_health = max_health;
 	potion = 3;
-	damage = 1;
-	weapon_attributes = 1;
+	base_damage = 10;
+	damage = base_damage;
+	weapon_attributes = 10;
 }
 
 void Character::gain_Attribute(int value, int value_health)
