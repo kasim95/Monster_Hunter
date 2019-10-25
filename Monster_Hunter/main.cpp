@@ -7,9 +7,8 @@
 #include <string>
 #include "Domain/Game/Map.hpp"
 
-int main()
+void test_map()
 {
-    std::cout << "Hello World!\n"; 
 	Map z;
 	std::array<std::array<std::string, 30>, 15> _map = z.get_map();
 	for (int i = 0; i < 15; ++i)
@@ -20,8 +19,15 @@ int main()
 		}
 		std::cout << std::endl;
 	}
+}
+
+int main()
+{
+    std::cout << "Hello World!\n"; 
+	test_map();
 	return 0;
 }
+
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
 // Debug program: F5 or Debug > Start Debugging menu
