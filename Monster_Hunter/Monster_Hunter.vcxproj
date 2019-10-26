@@ -155,6 +155,7 @@
     <ClInclude Include="Domain\Game\Assassin.hpp" />
     <ClInclude Include="Domain\Game\Battle.hpp" />
     <ClInclude Include="Domain\Game\Character.hpp" />
+    <ClInclude Include="UI\GameState.hpp" />
     <ClInclude Include="UI\ConsoleUI.hpp" />
     <ClInclude Include="Domain\Game\Dragon.hpp" />
     <ClInclude Include="Domain\Game\GameSession.hpp" />
@@ -172,12 +173,14 @@
     <ClInclude Include="TechnicalServices\Persistence\SimpleDB.hpp" />
     <ClInclude Include="TechnicalServices\Logging\SimpleLogger.hpp" />
     <ClInclude Include="Domain\AccountManagement\UserAccounts.hpp" />
+    <ClInclude Include="UI\PlayGame.hpp" />
     <ClInclude Include="UI\UserInterfaceHandler.hpp" />
     <ClInclude Include="Domain\Game\Warrior.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Domain\Game\Battle.cpp" />
     <ClCompile Include="Domain\Game\Character.cpp" />
+    <ClCompile Include="UI\GameState.cpp" />
     <ClCompile Include="UI\ConsoleUI.cpp" />
     <ClCompile Include="Domain\Game\GameSession.cpp" />
     <ClCompile Include="main.cpp" />

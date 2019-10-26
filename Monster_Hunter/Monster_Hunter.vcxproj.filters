@@ -93,6 +93,12 @@
     <ClInclude Include="Domain\Game\GameSession.hpp">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="UI\GameState.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\PlayGame.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -127,6 +133,9 @@
     </ClCompile>
     <ClCompile Include="Domain\Game\GameSession.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\GameState.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
