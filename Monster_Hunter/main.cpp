@@ -11,7 +11,7 @@
 #include "Domain/Game/Mage.hpp"
 #include "Domain/Game/GameSession.hpp"
 #include "Domain/Shop/Shop.hpp"
-
+#include "TechnicalServices/PaymentHandler/PaymentHandler.hpp"
 
 void test_map()
 {
@@ -158,6 +158,14 @@ void test_shop()
 	_shop.purchase("100A");
 }
 
+void test_payment_handler()
+{
+	std::cout << "Payment Handler test\n";
+	PaymentHandler payservice;
+	std::cout << payservice.findPurchaseByName("Kasim") << std::endl;
+	std::cout << payservice.purchaseItem("100A") << std::endl;
+}
+
 int main()
 {
     std::cout << "Hello World!\n"; 
@@ -168,7 +176,8 @@ int main()
 //	test_gamesession_move_character();
 //	test_gamesession_select_character();
 //	test_game_equip_weapon();
-	test_shop();
+//	test_shop();
+	test_payment_handler();
 	return 0;
 }
 
