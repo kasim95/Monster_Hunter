@@ -1,7 +1,6 @@
 //#include "pch.h"
 #include "GameSession.hpp"
 
-
 GameSession::GameSession()
 {
 	//Character* player_character = new Assassin();
