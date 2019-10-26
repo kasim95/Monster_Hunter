@@ -14,6 +14,10 @@ Character::Character()
 	weapon_attributes = 10;
 }
 
+Character::~Character() noexcept
+{
+}
+
 void Character::gain_Attribute(int value, int value_health)
 {
 	attributes += value;

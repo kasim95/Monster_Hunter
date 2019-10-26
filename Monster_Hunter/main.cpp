@@ -133,10 +133,20 @@ void test_gamesession_select_character()
 
 void test_game_equip_weapon()
 {
+	//this test is still failing for default constructor of GameSession
+	std::cout << "\n\nDefault constructor";
 	GameSession gamesess;
 	std::cout << "\nearlier damage is " << gamesess.get_player_damage();
 	gamesess.equip_weapon(100);
 	std::cout << "\nequipped weapon damage is " << gamesess.get_player_damage();
+	
+	std::cout << "\n\nSelect character constructor";
+	Mage warr;
+	GameSession gamesess1(&warr);
+	std::cout << "\nearlier damage is " << gamesess1.get_player_damage();
+	gamesess1.equip_weapon(100);
+	std::cout << "\nequipped weapon damage is " << gamesess1.get_player_damage();
+
 
 }
 
@@ -144,9 +154,9 @@ int main()
 {
     std::cout << "Hello World!\n"; 
 //	test_map();
-//	test_assassin();
-//	test_warrior();
-//	test_mage();
+	test_assassin();
+	test_warrior();
+	test_mage();
 //	test_gamesession_move_character();
 //	test_gamesession_select_character();
 	test_game_equip_weapon();

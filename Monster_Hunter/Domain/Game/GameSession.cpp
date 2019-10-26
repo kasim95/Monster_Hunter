@@ -4,7 +4,10 @@
 
 GameSession::GameSession()
 {
-	Character* player_character = new Assassin();
+	//Character* player_character = new Assassin();
+	// the reason the test for equip weapon WAS failing because Assassin z is lost once the constructor is called and this causes memory leak which returns a nullptr
+	Character* z = new Assassin();
+	player_character = z;
 	player_character->calculate_damage();
 	time1 = clock();
 	time2 = time1;
@@ -12,6 +15,7 @@ GameSession::GameSession()
 
 GameSession::GameSession(Character * selected_character)
 {
+	//Character* player_character;
 	player_character = selected_character;
 	player_character->calculate_damage();
 	time1 = clock();
@@ -141,7 +145,7 @@ int GameSession::get_player_damage()
 	return player_character->get_damage();
 }
 
-int GameSession::get_player_health_percentage()
+double GameSession::get_player_health_percentage()
 {
 	return (player_character->get_current_health() * 100) / (player_character->get_max_health());
 }

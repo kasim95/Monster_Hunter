@@ -1,6 +1,7 @@
 #pragma once
 #include <array>
 #include <ctime>
+#include <memory>
 #include "Character.hpp"
 #include "Assassin.hpp"
 #include "Warrior.hpp"
@@ -36,5 +37,5 @@ public:
 	std::array<std::array<std::string, 30>, 15> return_map();
 	bool equip_weapon(int weapon_attributes);
 	int get_player_damage();
-	int get_player_health_percentage();
+	double get_player_health_percentage();
 };

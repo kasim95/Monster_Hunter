@@ -5,16 +5,16 @@ class Warrior : public Character
 {
 public:
 	void calculate_damage() override;
-	//~Warrior() noexcept override;
+	~Warrior() noexcept override;
 	void set_image() override;
 };
 
 
 //Inline implementation
-/*
+
 inline Warrior::~Warrior() noexcept
 {}
-*/
+
 
 inline void Warrior::calculate_damage()
 {
