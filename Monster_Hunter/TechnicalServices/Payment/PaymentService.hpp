@@ -21,6 +21,7 @@ namespace TechnicalServices::Payment
 		bool purchaseItem(std::string _itemid);
 		bool findPurchaseByName(std::string _username);
 		bool verifypaymentdetails(std::string username, std::string credicardno, std::string cvv);
+		bool getFileContent(std::string fileName, std::vector<std::string> & vecOfStrs);
 	};
 }
 

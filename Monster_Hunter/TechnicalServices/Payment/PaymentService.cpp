@@ -1,4 +1,8 @@
 #include "PaymentService.hpp"
+#include <iostream>
+#include <fstream>
+#include <iterator>
+#include <vector>
 
 namespace TechnicalServices::Payment
 {
@@ -45,7 +49,11 @@ namespace TechnicalServices::Payment
 			if (verifypaymentdetails(_username, _creditcardno, _cvv))
 			{
 				purchase_history.push_back({ _username, _itemid });
+				std::ofstream output_file("./PURCHASE_HISTORY.txt");
+				std::ostream_iterator<std::string> output_iterator(output_file, "\n");
+				std::copy(purchase_history.begin(), purchase_history.end(), output_iterator);
 				//enter code to save the purchase history to text file
+				//done. save purchased items in the text file
 				return true;
 			}
 			return false;
@@ -59,6 +67,20 @@ namespace TechnicalServices::Payment
 	bool PaymentService::findPurchaseByName(std::string _username)
 	{
 		//enter code to update purchase_history vector from text file
+		//done
+		std::vector<std::string> tem_purchase_history;
+		bool result = getFileContent("PURCHASE_HISTORY.txt", tem_purchase_history);
+		if (result)
+		{
+			int n = 0;
+			while (n < tem_purchase_history.size())
+			{
+				purchase_history.push_back({ tem_purchase_history[n],tem_purchase_history[n + 1] });
+				n = n + 2;
+				//group every two elements which username and itemid into purchase_history to update 
+			}
+		}
+
 		for (int i = 0; i < purchase_history.size(); ++i)
 		{
 			if (purchase_history[i].username == _username)
@@ -76,5 +98,31 @@ namespace TechnicalServices::Payment
 			return true;
 		}
 		return false;
+	}
+
+	bool getFileContent(std::string fileName, std::vector<std::string> & vecOfStrs)
+	{
+
+		// Open the File
+		std::ifstream in(fileName.c_str());
+
+		// Check if object is valid
+		if (!in)
+		{
+			std::cerr << "Cannot open the File : " << fileName << std::endl;
+			return false;
+		}
+
+		std::string str;
+		// Read the next line from File untill it reaches the end.
+		while (std::getline(in, str))
+		{
+			// Line contains string of length > 0 then save it in vector
+			if (str.size() > 0)
+				vecOfStrs.push_back(str);
+		}
+		//Close The File
+		in.close();
+		return true;
 	}
 }
