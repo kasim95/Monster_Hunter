@@ -1,12 +1,12 @@
-//#include "pch.h"
 #include "Monster.hpp"
 
-
-Monster::Monster()
+namespace Domain::Game
 {
-}
+	Monster::Monster()
+	{
+	}
 
-
-Monster::~Monster()
-{
+	Monster::~Monster()
+	{
+	}
 }

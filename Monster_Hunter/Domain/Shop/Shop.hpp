@@ -1,15 +1,25 @@
 #pragma once
 #include <array>
-#include "Item.hpp"
+#include "../../TechnicalServices/Payment/PaymentService.hpp"
 
-class Shop
+namespace Domain::Shop
 {
-private:
-	std::array<Item, 1> items;
-public:
-	Shop();
-	~Shop() = default;
-	void purchase(std::string item_id);
-	std::array<Item, 1> display_item(std::string item_id);
-};
+	struct Item
+	{
+		std::string id;
+		std::string name;
+		double price;
+	};
 
+	class Shop
+	{
+	private:
+		std::array<Item, 1> items; //there is only one item that can be purchased as of now
+		TechnicalServices::Payment::PaymentService payservice;
+	public:
+		Shop();
+		~Shop() = default;
+		bool purchase(std::string item_id);
+		std::array<Item, 1> display_item(std::string item_id);
+	};
+}

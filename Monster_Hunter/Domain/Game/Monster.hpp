@@ -1,8 +1,11 @@
 #pragma once
-class Monster
-{
-public:
-	Monster();
-	~Monster();
-};
 
+namespace Domain::Game
+{
+	class Monster
+	{
+	public:
+		Monster();
+		~Monster();
+	};
+}

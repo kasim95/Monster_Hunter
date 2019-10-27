@@ -15,7 +15,7 @@
 
 void test_map()
 {
-	Map z;
+	Domain::Game::Map z;
 	std::array<std::array<std::string, 30>, 15> _map = z.get_map();
 	for (int i = 0; i < 15; ++i)
 	{
@@ -29,7 +29,7 @@ void test_map()
 
 void test_assassin()
 {
-	Assassin assassin;
+	Domain::Game::Assassin assassin;
 	std::cout << "\nAssassin's Base Damage is " << assassin.get_damage();
 	assassin.calculate_damage();
 	std::cout << "\nAssassin's Damage is " << assassin.get_damage();
@@ -37,7 +37,7 @@ void test_assassin()
 
 void test_warrior()
 {
-	Warrior warrior;
+	Domain::Game::Warrior warrior;
 	std::cout << "\nWarrior's Base Damage is " << warrior.get_damage();
 	warrior.calculate_damage();
 	std::cout << "\nWarrior's Damage is " << warrior.get_damage();
@@ -45,7 +45,7 @@ void test_warrior()
 
 void test_mage()
 {
-	Mage mage;
+	Domain::Game::Mage mage;
 	std::cout << "\nMage's Base Damage is " << mage.get_damage();
 	mage.calculate_damage();
 	std::cout << "\nMage's Damage is " << mage.get_damage();
@@ -54,7 +54,7 @@ void test_mage()
 void test_gamesession_move_character()
 {
 	std::array<std::array<std::string, 30>, 15> _map;
-	GameSession gamesess;
+	Domain::Game::GameSession gamesess;
 	//std::cout << gamesess.usePotion();
 	int x = 0;
 	//move right twice
@@ -129,22 +129,22 @@ void test_gamesession_move_character()
 
 void test_gamesession_select_character()
 {
-	Warrior warrior;
-	GameSession gamesess(&warrior);
+	Domain::Game::Warrior warrior;
+	Domain::Game::GameSession gamesess(&warrior);
 }
 
 void test_game_equip_weapon()
 {
-	//this test is still failing for default constructor of GameSession
+	//this test was failing for default constructor of GameSession -FIXED
 	std::cout << "\n\nDefault constructor";
-	GameSession gamesess;
+	Domain::Game::GameSession gamesess;
 	std::cout << "\nearlier damage is " << gamesess.get_player_damage();
 	gamesess.equip_weapon(100);
 	std::cout << "\nequipped weapon damage is " << gamesess.get_player_damage();
 	
 	std::cout << "\n\nSelect character constructor";
-	Mage warr;
-	GameSession gamesess1(&warr);
+	Domain::Game::Mage warr;
+	Domain::Game::GameSession gamesess1(&warr);
 	std::cout << "\nearlier damage is " << gamesess1.get_player_damage();
 	gamesess1.equip_weapon(100);
 	std::cout << "\nequipped weapon damage is " << gamesess1.get_player_damage();
@@ -154,15 +154,15 @@ void test_game_equip_weapon()
 
 void test_shop()
 {
-	Shop _shop;
-	_shop.purchase("100A");
+	Domain::Shop::Shop _shop;
+	std::cout << _shop.purchase("100A");
+	std::cout << _shop.purchase("100A");
 }
 
 void test_payment_handler()
 {
 	std::cout << "Payment Handler test\n";
 	TechnicalServices::Payment::PaymentService payservice;
-	//	PaymentService payservice;
 	std::cout << payservice.findPurchaseByName("Kasim") << std::endl;
 	std::cout << payservice.purchaseItem("100A") << std::endl;
 }

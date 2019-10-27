@@ -166,7 +166,6 @@
     <ClInclude Include="Domain\Game\GameSession.hpp" />
     <ClInclude Include="Domain\Game\Goblin.hpp" />
     <ClInclude Include="Domain\Game\Golem.hpp" />
-    <ClInclude Include="Domain\Shop\Item.hpp" />
     <ClInclude Include="TechnicalServices\Logging\LoggerHandler.hpp" />
     <ClInclude Include="Domain\Game\Mage.hpp" />
     <ClInclude Include="Domain\Game\Map.hpp" />
@@ -182,7 +181,6 @@
     <ClInclude Include="Domain\Game\Warrior.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Domain\Game\Battle.cpp" />
     <ClCompile Include="Domain\Game\Character.cpp" />
     <ClCompile Include="Domain\Menu\SessionHandler.cpp" />
     <ClCompile Include="TechnicalServices\Payment\PaymentService.cpp" />

@@ -1,130 +1,130 @@
-//#include "pch.h"
 #include "Character.hpp"
 
-Character::Character()
+namespace Domain::Game
 {
-	name = "NA";
-	weapon_name = "NA";
-	attributes = 9;
-	max_health = 50;
-	current_health = max_health;
-	potion = 3;
-	base_damage = 10;
-	damage = base_damage;
-	weapon_attributes = 10;
-}
+	Character::Character()
+	{
+		name = "NA";
+		weapon_name = "NA";
+		attributes = 9;
+		max_health = 50;
+		current_health = max_health;
+		potion = 3;
+		base_damage = 10;
+		damage = base_damage;
+		weapon_attributes = 10;
+	}
 
-Character::~Character() noexcept
-{
-}
+	Character::~Character() noexcept
+	{
+	}
 
-void Character::gain_Attribute(int value, int value_health)
-{
-	attributes += value;
-	max_health += value_health;
-	calculate_damage();
-}
+	void Character::gain_Attribute(int value, int value_health)
+	{
+		attributes += value;
+		max_health += value_health;
+		calculate_damage();
+	}
 
-void Character::equip_Weapon(int wa, std::string wn)
-{
-	weapon_attributes = wa;
-	weapon_name = wn;
-	attributes += weapon_attributes;
-}
+	void Character::equip_Weapon(int wa, std::string wn)
+	{
+		weapon_attributes = wa;
+		weapon_name = wn;
+		attributes += weapon_attributes;
+	}
 
-int Character::get_attributes()
-{
-	return 0;
-}
+	int Character::get_attributes()
+	{
+		return 0;
+	}
 
-void Character::set_attributes(const int value)
-{
-	attributes = value;
-}
+	void Character::set_attributes(const int value)
+	{
+		attributes = value;
+	}
 
-double Character::get_max_health()
-{
-	return max_health;
-}
+	double Character::get_max_health()
+	{
+		return max_health;
+	}
 
-void Character::set_max_health(const double value)
-{
-	max_health = value;
-}
+	void Character::set_max_health(const double value)
+	{
+		max_health = value;
+	}
 
-double Character::get_current_health()
-{
-	return current_health;
-}
+	double Character::get_current_health()
+	{
+		return current_health;
+	}
 
-void Character::set_current_health(const double value)
-{
-	current_health = value;
-}
+	void Character::set_current_health(const double value)
+	{
+		current_health = value;
+	}
 
+	int Character::get_potion()
+	{
+		return potion;
+	}
 
-int Character::get_potion()
-{
-	return potion;
-}
+	void Character::set_potion(const int value)
+	{
+		potion = value;
+	}
 
-void Character::set_potion(const int value)
-{
-	potion = value;
-}
+	int Character::get_base_damage()
+	{
+		return base_damage;
+	}
 
-int Character::get_base_damage()
-{
-	return base_damage;
-}
+	void Character::set_base_damage(const int value)
+	{
+		base_damage = value;
+	}
 
-void Character::set_base_damage(const int value)
-{
-	base_damage = value;
-}
+	int Character::get_damage()
+	{
+		return damage;
+	}
 
-int Character::get_damage()
-{
-	return damage;
-}
+	void Character::set_damage(const int value)
+	{
+		damage = value;
+	}
 
-void Character::set_damage(const int value)
-{
-	damage = value;
-}
+	int Character::get_weapon_attributes()
+	{
+		return weapon_attributes;
+	}
 
-int Character::get_weapon_attributes()
-{
-	return weapon_attributes;
-}
+	void Character::set_weapon_attributes(const int value)
+	{
+		weapon_attributes = value;
+	}
 
-void Character::set_weapon_attributes(const int value)
-{
-	weapon_attributes = value;
-}
+	std::string Character::get_weapon_name()
+	{
+		return weapon_name;
+	}
 
-std::string Character::get_weapon_name()
-{
-	return weapon_name;
-}
+	void Character::set_weapon_name(const std::string value)
+	{
+		weapon_name = value;
+	}
 
-void Character::set_weapon_name(const std::string value)
-{
-	weapon_name = value;
-}
+	std::string Character::get_name()
+	{
+		return name;
+	}
 
-std::string Character::get_name()
-{
-	return name;
-}
+	void Character::set_name(const std::string value)
+	{
+		name = value;
+	}
 
-void Character::set_name(const std::string value)
-{
-	name = value;
-}
-
-
-std::array<std::array<std::string, 20>, 20> Character::get_image()
-{
-	return image;
+	std::array<std::array<std::string, 20>, 20> Character::get_image()
+	{
+		return image;
+	}
 }
