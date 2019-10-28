@@ -26,20 +26,20 @@ namespace UI
 
 		if (chartoint == 1)
 		{
-			Domain::Game::Assassin z;
-			Domain::Game::GameSession _gamesess(&z);
+			Domain::Game::Assassin * z = new Domain::Game::Assassin();
+			Domain::Game::GameSession _gamesess(z);
 			gamesess = _gamesess;
 		}
 		else if (chartoint == 2)
 		{
-			Domain::Game::Warrior z;
-			Domain::Game::GameSession _gamesess(&z);
+			Domain::Game::Warrior * z = new Domain::Game::Warrior;
+			Domain::Game::GameSession _gamesess(z);
 			gamesess = _gamesess;
 		}
 		else
 		{
-			Domain::Game::Mage z;
-			Domain::Game::GameSession _gamesess(&z);
+			Domain::Game::Mage * z = new Domain::Game::Mage;
+			Domain::Game::GameSession _gamesess(z);
 			gamesess = _gamesess;
 		}
 	}
@@ -74,7 +74,15 @@ namespace UI
 				gamesess.reset_all_monsters();
 			}
 			else;
+			//if playerdead end
+			if (!gamesess.is_player_alive()) playeralive = false;
+			if (!gamesess.is_dragon_alive()) dragonalive = false;
 		}
+		system("cls");
+		if (playeralive == false) std::cout << "\nGAME OVER";
+		if (dragonalive == false) std::cout << "\nYOU WIN";
+		gamesess.end_game();
+		std::cout << "\nScore is: " << gamesess.calculate_score();
 	}
 
 	std::string PlayGame::takeinput()

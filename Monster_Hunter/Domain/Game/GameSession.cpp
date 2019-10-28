@@ -209,4 +209,14 @@ namespace Domain::Game
 		else if (monster_type == 3) return strong_monster.get_weapon_drop();
 		else return 0.0;
 	}
+	bool GameSession::is_player_alive()
+	{
+		if (player_character->get_current_health() > 0.0) return true;
+		return false;
+	}
+	bool GameSession::is_dragon_alive()
+	{
+		if (dragon_monster.get_current_health() > 0.0) return true;
+		return false;
+	}
 }
