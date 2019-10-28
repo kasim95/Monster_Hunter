@@ -33,7 +33,7 @@ namespace TechnicalServices::Payment
 				std::getline(std::cin, _username);
 			}
 			bool alreadypurchased = false;
-			for (int i = 0; i < purchase_history.size(); ++i)
+			for (unsigned i = 0; i < purchase_history.size(); ++i)
 			{
 				if (purchase_history[i].username == _username)
 				{
@@ -49,16 +49,16 @@ namespace TechnicalServices::Payment
 			if (verifypaymentdetails(_username, _creditcardno, _cvv))
 			{
 				purchase_history.push_back({ _username, _itemid });
-				std::ofstream output_file("./PURCHASE_HISTORY.txt");
-				std::ostream_iterator<std::string> output_iterator(output_file, "\n");
-				std::copy(purchase_history.begin(), purchase_history.end(), output_iterator);
+				//std::ofstream output_file("./PURCHASE_HISTORY.txt");
+				//std::ostream_iterator<std::string> output_iterator(output_file, "\n");
+				//std::copy(purchase_history.begin(), purchase_history.end(), output_iterator);
 				//enter code to save the purchase history to text file
 				//done. save purchased items in the text file
 				return true;
 			}
 			return false;
 		}
-		catch (int e)
+		catch (...)
 		{
 			return false;
 		}
@@ -72,7 +72,7 @@ namespace TechnicalServices::Payment
 		bool result = getFileContent("PURCHASE_HISTORY.txt", tem_purchase_history);
 		if (result)
 		{
-			int n = 0;
+			unsigned n = 0;
 			while (n < tem_purchase_history.size())
 			{
 				purchase_history.push_back({ tem_purchase_history[n],tem_purchase_history[n + 1] });
@@ -81,7 +81,7 @@ namespace TechnicalServices::Payment
 			}
 		}
 
-		for (int i = 0; i < purchase_history.size(); ++i)
+		for (unsigned i = 0; i < purchase_history.size(); ++i)
 		{
 			if (purchase_history[i].username == _username)
 			{
