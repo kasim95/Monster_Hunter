@@ -1,4 +1,7 @@
 #pragma once
+#include "Monster.hpp"
+#include <array>
+#include <string>
 namespace Domain::Game
 {
 	class Orc : public Domain::Game::Monster

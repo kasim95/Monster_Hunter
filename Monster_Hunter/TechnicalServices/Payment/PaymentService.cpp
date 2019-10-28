@@ -100,7 +100,7 @@ namespace TechnicalServices::Payment
 		return false;
 	}
 
-	bool getFileContent(std::string fileName, std::vector<std::string> & vecOfStrs)
+	bool PaymentService::getFileContent(std::string fileName, std::vector<std::string> & vecOfStrs)
 	{
 
 		// Open the File
