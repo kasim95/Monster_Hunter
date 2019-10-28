@@ -1,0 +1,9 @@
+1. Start the game
+2. show map
+3. wait for user input
+user can press movement key (wasd) or enter key f
+or usepotion key z
+4. if user is on W, M,S, D he can press  f to enter camp
+if user is on C, heal_using_campfire
+5. if user presses f to enter camp, hide map and show battle
+6. battle ends when either character or monster health reduces to 0

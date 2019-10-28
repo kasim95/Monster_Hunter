@@ -41,5 +41,6 @@ namespace Domain::Game
 		bool equip_weapon(int weapon_attributes);
 		int get_player_damage();
 		double get_player_health_percentage();
+		char get_previous_char();
 	};
 }

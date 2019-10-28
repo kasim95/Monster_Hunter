@@ -12,6 +12,7 @@
 #include "Domain/Game/GameSession.hpp"
 #include "Domain/Shop/Shop.hpp"
 #include "TechnicalServices/Payment/PaymentService.hpp"
+#include "UI/PlayGame.hpp"
 
 void test_map()
 {
@@ -167,6 +168,14 @@ void test_payment_handler()
 	std::cout << payservice.purchaseItem("100A") << std::endl;
 }
 
+void test_play_game()
+{
+	UI::PlayGame playgame;
+	playgame.disp_map();
+	playgame.launch();
+}
+
+
 int main()
 {
     std::cout << "Hello World!\n"; 
@@ -174,11 +183,12 @@ int main()
 //	test_assassin();
 //	test_warrior();
 //	test_mage();
-	test_gamesession_move_character();
-	test_gamesession_select_character();
+//	test_gamesession_move_character();
+//	test_gamesession_select_character();
 //	test_game_equip_weapon();
 //	test_shop();
 //	test_payment_handler();
+	test_play_game();
 	return 0;
 }
 

@@ -157,4 +157,8 @@ namespace Domain::Game
 	{
 		return (player_character->get_current_health() * 100) / (player_character->get_max_health());
 	}
+	char GameSession::get_previous_char()
+	{
+		return map.get_previous_char()[0];
+	}
 }

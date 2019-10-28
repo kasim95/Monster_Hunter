@@ -84,12 +84,6 @@
     <ClInclude Include="Domain\Game\GameSession.hpp">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="UI\GameState.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="UI\PlayGame.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Domain\AccountManagement\AccountManagementHandler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -103,6 +97,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Domain\Menu\AdminSession.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="UI\PlayGame.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -134,13 +131,13 @@
     <ClCompile Include="Domain\Game\GameSession.cpp">
       <Filter>Game</Filter>
     </ClCompile>
-    <ClCompile Include="UI\GameState.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="TechnicalServices\Payment\PaymentService.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Domain\Menu\SessionHandler.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="UI\PlayGame.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
