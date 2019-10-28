@@ -2,7 +2,8 @@
 #include <iostream>
 #include <stdio.h>
 #include <conio.h>
-
+//conio.h does not work for Linux, Change it to curses.h, or ncurses.h 
+//#include <curses.h>
 namespace UI
 {
 	PlayGame::PlayGame()
@@ -51,8 +52,13 @@ namespace UI
 		{
 			char _input;
 			disp_map();
-			_input = _getch();
+			_input = _getch();			//change this to getch for linux
 			_input = toupper(_input);
+			char previous_char = gamesess.get_previous_char();
+			if (gamesess.get_player_health_percentage() != 100.0 && previous_char == 'C')
+			{
+				gamesess.heal_using_campfire();
+			}
 			if (_input == 'A') gamesess.move_character(1);
 			else if (_input == 'D') gamesess.move_character(3);
 			else if (_input == 'W') gamesess.move_character(4);
@@ -60,7 +66,6 @@ namespace UI
 			else if (_input == 'Z') gamesess.usePotion();
 			else if (_input == 'F')
 			{
-				char previous_char = gamesess.get_previous_char();
 				if (previous_char == 'W') gamesess.fight(1);
 				else if (previous_char == 'M') gamesess.fight(2);
 				else if (previous_char == 'S') gamesess.fight(3);
@@ -92,6 +97,7 @@ namespace UI
 			}
 			std::cout << std::endl;
 		}
+		std::cout << "\nRemaining Potions: " << gamesess.get_no_of_potions() << "\tPlayer Health: " << gamesess.get_player_health_percentage() << " %\n";
 		std::cout << "\nLEGEND: @ = Character position, C = Campfire, W = Weak Monster, M = Medium Monster, S = Strong Monster, D = Dragon\n";
 		std::cout << "\nCONTROLS: W - Up, S - Down, A - Left, D - Right, F - Enter Camp, Z - Use Potion\n";
 	}

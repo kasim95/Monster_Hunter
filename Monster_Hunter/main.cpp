@@ -57,7 +57,6 @@ void test_gamesession_move_character()
 	std::array<std::array<std::string, 30>, 15> _map;
 	Domain::Game::GameSession gamesess;
 	//std::cout << gamesess.usePotion();
-	int x = 0;
 	//move right twice
 	std::cout << "\n\n\nmoving right twice\n";
 	gamesess.move_character(3);

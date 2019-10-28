@@ -161,4 +161,8 @@ namespace Domain::Game
 	{
 		return map.get_previous_char()[0];
 	}
+	int GameSession::get_no_of_potions()
+	{
+		return player_character->get_potion();
+	}
 }
