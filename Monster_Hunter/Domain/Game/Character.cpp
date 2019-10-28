@@ -6,8 +6,8 @@ namespace Domain::Game
 	{
 		name = "NA";
 		weapon_name = "NA";
-		attributes = 9;
-		max_health = 50;
+		attributes = 10;
+		max_health = 100;
 		current_health = max_health;
 		potion = 3;
 		base_damage = 10;
@@ -16,29 +16,28 @@ namespace Domain::Game
 	}
 
 	Character::~Character() noexcept
-	{
-	}
+	{}
 
-	void Character::gain_Attribute(int value, int value_health)
+	void Character::gain_Attribute(double value, double value_health)
 	{
 		attributes += value;
 		max_health += value_health;
 		calculate_damage();
 	}
 
-	void Character::equip_Weapon(int wa, std::string wn)
+	void Character::equip_Weapon(double wa, std::string wn)
 	{
 		weapon_attributes = wa;
 		weapon_name = wn;
 		attributes += weapon_attributes;
 	}
 
-	int Character::get_attributes()
+	double Character::get_attributes()
 	{
 		return 0;
 	}
 
-	void Character::set_attributes(const int value)
+	void Character::set_attributes(const double value)
 	{
 		attributes = value;
 	}
@@ -73,32 +72,32 @@ namespace Domain::Game
 		potion = value;
 	}
 
-	int Character::get_base_damage()
+	double Character::get_base_damage()
 	{
 		return base_damage;
 	}
 
-	void Character::set_base_damage(const int value)
+	void Character::set_base_damage(const double value)
 	{
 		base_damage = value;
 	}
 
-	int Character::get_damage()
+	double Character::get_damage()
 	{
 		return damage;
 	}
 
-	void Character::set_damage(const int value)
+	void Character::set_damage(const double value)
 	{
 		damage = value;
 	}
 
-	int Character::get_weapon_attributes()
+	double Character::get_weapon_attributes()
 	{
 		return weapon_attributes;
 	}
 
-	void Character::set_weapon_attributes(const int value)
+	void Character::set_weapon_attributes(const double value)
 	{
 		weapon_attributes = value;
 	}

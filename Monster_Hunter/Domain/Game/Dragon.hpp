@@ -17,7 +17,7 @@ namespace Domain::Game
 
 	inline void Dragon::reset_monster()
 	{
-		max_health = 30 * 10;
+		max_health = 200 * 10;
 		current_health = max_health;
 		damage = 6 * 7;
 		monster_name = "DRAGON";

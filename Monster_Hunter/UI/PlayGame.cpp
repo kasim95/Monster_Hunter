@@ -66,11 +66,12 @@ namespace UI
 			else if (_input == 'Z') gamesess.usePotion();
 			else if (_input == 'F')
 			{
-				if (previous_char == 'W') gamesess.fight(1);
-				else if (previous_char == 'M') gamesess.fight(2);
-				else if (previous_char == 'S') gamesess.fight(3);
-				else if (previous_char == 'D') gamesess.fight(4);
+				if (previous_char == 'W') battle(1);
+				else if (previous_char == 'M') battle(2);
+				else if (previous_char == 'S') battle(3);
+				else if (previous_char == 'D') battle(4);
 				else;			//do nothing
+				gamesess.reset_all_monsters();
 			}
 			else;
 		}
@@ -97,9 +98,134 @@ namespace UI
 			}
 			std::cout << std::endl;
 		}
-		std::cout << "\nRemaining Potions: " << gamesess.get_no_of_potions() << "\tPlayer Health: " << gamesess.get_player_health_percentage() << " %\n";
+		std::cout << "\nRemaining Potions: " << gamesess.get_no_of_potions() << "\tPlayer Health: " << gamesess.get_player_health_percentage() << " % " << "Player Damage:" << gamesess.get_player_damage()  << "\n";
 		std::cout << "\nLEGEND: @ = Character position, C = Campfire, W = Weak Monster, M = Medium Monster, S = Strong Monster, D = Dragon\n";
 		std::cout << "\nCONTROLS: W - Up, S - Down, A - Left, D - Right, F - Enter Camp, Z - Use Potion\n";
 	}
 
+	bool PlayGame::battle(int monster_type)
+	{
+		double player_health = gamesess.get_player_health_percentage();
+		double monster_health;
+		char _input2;
+		if (monster_type == 1)
+		{
+			monster_health = gamesess.get_weak_monster_health_percentage();
+			while (player_health > 0.0 && monster_health > 0.0)
+			{
+				disp_battle(1, player_health, monster_health);
+				_input2 = _getch(); //wait for user input to press attack key
+				_input2 = toupper(_input2);
+				if (_input2 == 'G')
+				{
+					gamesess.attack(1, 1);
+					disp_battle(0, player_health, monster_health);
+					gamesess.attack(1, 0);
+					disp_battle(1, player_health, monster_health);
+				}
+				player_health = gamesess.get_player_health_percentage();
+				monster_health = gamesess.get_weak_monster_health_percentage();
+				if (monster_health <= 0.0)
+				{
+					weapon_drop(1);
+					return true;
+				}
+			}
+			return false;
+		}
+		else if (monster_type == 2)
+		{
+			monster_health = gamesess.get_medium_monster_health_percentage();
+			while (player_health > 0.0 && monster_health > 0.0)
+			{
+				disp_battle(1, player_health, monster_health);
+				_input2 = _getch(); //wait for user input to press attack key
+				_input2 = toupper(_input2);
+				if (_input2 == 'G')
+				{
+					gamesess.attack(2, 1);
+					disp_battle(0, player_health, monster_health);
+					gamesess.attack(2, 0);
+					disp_battle(1, player_health, monster_health);
+				}
+				player_health = gamesess.get_player_health_percentage();
+				monster_health = gamesess.get_medium_monster_health_percentage();
+				if (monster_health <= 0.0)
+				{
+					weapon_drop(2);
+					return true;
+				}
+			}
+			return false;
+		}
+		else if (monster_type == 3)
+		{
+			monster_health = gamesess.get_strong_monster_health_percentage();
+			while (player_health > 0.0 && monster_health > 0.0)
+			{
+				disp_battle(1, player_health, monster_health);
+				_input2 = _getch(); //wait for user input to press attack key
+				_input2 = toupper(_input2);
+				if (_input2 == 'G')
+				{
+					gamesess.attack(3, 1);
+					disp_battle(0, player_health, monster_health);
+					gamesess.attack(3, 0);
+					disp_battle(1, player_health, monster_health);
+				}
+				player_health = gamesess.get_player_health_percentage();
+				monster_health = gamesess.get_strong_monster_health_percentage();
+				if (monster_health <= 0.0)
+				{
+					weapon_drop(3);
+					return true;
+				}
+			}
+			return false;
+		}
+		else if (monster_type == 4)
+		{
+			monster_health = gamesess.get_dragon_monster_health_percentage();
+			while (player_health > 0.0 && monster_health > 0.0)
+			{
+				disp_battle(1, player_health, monster_health);
+				_input2 = _getch(); //wait for user input to press attack key
+				_input2 = toupper(_input2);
+				if (_input2 == 'G')
+				{
+					gamesess.attack(4, 1);
+					disp_battle(0, player_health, monster_health);
+					gamesess.attack(4, 0);
+					disp_battle(1, player_health, monster_health);
+				}
+				player_health = gamesess.get_player_health_percentage();
+				monster_health = gamesess.get_dragon_monster_health_percentage();
+				if (monster_health <= 0.0)
+				{
+					return true;
+				}
+			}
+			return false;
+
+		}
+		else return false;
+	}
+
+	void PlayGame::disp_battle(bool char_turn, double char_health, double monster_health)
+	{
+		system("cls");
+		std::cout << "\nPlayer Health: " << char_health << std::endl;
+		std::cout << "\nMonster Health: " << monster_health << std::endl;
+		if (char_turn) std::cout << "\nPlayer's turn to attack\n";
+		else std::cout << "\nMonster's turn to attack\n";
+	}
+	void PlayGame::weapon_drop(int monster_type)
+	{
+		std::cout << "Weapon dropped by monster with damage " << gamesess.get_weapon_drop_attributes(monster_type);
+		std::cout << "\nDo you want to pick up the weapon? (Y/N)";
+		char _input3;
+		std::cin >> _input3;
+		_input3 = toupper(_input3);
+		if (_input3 == 'Y') gamesess.equip_weapon(gamesess.get_weapon_drop_attributes(1));
+	}
 }

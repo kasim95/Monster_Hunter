@@ -17,7 +17,7 @@ namespace Domain::Game
 
 	inline void Goblin::reset_monster()
 	{
-		max_health = 30 * 1;
+		max_health = 200 * 1;
 		current_health = max_health;
 		damage = 6 * 1;
 		monster_name = "GOBLIN";

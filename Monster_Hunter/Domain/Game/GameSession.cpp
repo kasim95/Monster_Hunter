@@ -96,30 +96,44 @@ namespace Domain::Game
 		}
 	}
 
-	void GameSession::fight(int monster_type)
+	void GameSession::attack(int monster_type, bool char_turn)
 	{
-		int z; //placeholder for no code
 		/*
 		monster_type = 1 for weak monster
 		monster_type = 2 for medium monster
 		monster_type = 3 for strong monster
 		monster_type = 4 for dragon monster
 		*/
+		//later implement battle log message for each attack
+		double char_health = player_character->get_current_health();
+		double char_damage = player_character->get_damage();
 		if (monster_type == 1)
 		{
-			z = 1;
+			double monster_health = weak_monster.get_current_health();
+			double monster_damage = weak_monster.get_damage();
+			if (char_turn) weak_monster.set_current_health(monster_health - char_damage);
+			else player_character->set_current_health(char_health - monster_damage);
 		}
 		else if (monster_type == 2)
 		{
-			z = 2;
+			double monster_health = medium_monster.get_current_health();
+			double monster_damage = medium_monster.get_damage();
+			if (char_turn) medium_monster.set_current_health(monster_health - char_damage);
+			else player_character->set_current_health(char_health - monster_damage);
 		}
 		else if (monster_type == 3)
 		{
-			z = 3;
+			double monster_health = strong_monster.get_current_health();
+			double monster_damage = strong_monster.get_damage();
+			if (char_turn) strong_monster.set_current_health(monster_health - char_damage);
+			else player_character->set_current_health(char_health - monster_damage);
 		}
 		else
 		{
-			z = 4;
+			double monster_health = dragon_monster.get_current_health();
+			double monster_damage = dragon_monster.get_damage();
+			if (char_turn) dragon_monster.set_current_health(monster_health - char_damage);
+			else player_character->set_current_health(char_health - monster_damage);
 		}
 	}
 
@@ -143,12 +157,13 @@ namespace Domain::Game
 
 	bool GameSession::equip_weapon(int weapon_attributes)
 	{
-		player_character->set_weapon_attributes(weapon_attributes);
+//		player_character->set_weapon_attributes(weapon_attributes);
+		player_character->gain_Attribute(weapon_attributes, 0);
 		player_character->calculate_damage();
 		return true;
 	}
 
-	int GameSession::get_player_damage()
+	double GameSession::get_player_damage()
 	{
 		return player_character->get_damage();
 	}
@@ -164,5 +179,34 @@ namespace Domain::Game
 	int GameSession::get_no_of_potions()
 	{
 		return player_character->get_potion();
+	}
+	double GameSession::get_weak_monster_health_percentage()
+	{
+		return (weak_monster.get_current_health() * 100)/weak_monster.get_max_health();
+	}
+	double GameSession::get_medium_monster_health_percentage()
+	{
+		return (medium_monster.get_current_health() * 100)/medium_monster.get_max_health();
+	}
+	double GameSession::get_strong_monster_health_percentage()
+	{
+		return (strong_monster.get_current_health() * 100)/strong_monster.get_max_health();
+	}
+	double GameSession::get_dragon_monster_health_percentage()
+	{
+		return (dragon_monster.get_current_health() * 100)/dragon_monster.get_max_health();
+	}
+	void GameSession::reset_all_monsters()
+	{
+		weak_monster.reset_monster();
+		medium_monster.reset_monster();
+		strong_monster.reset_monster();
+	}
+	double GameSession::get_weapon_drop_attributes(int monster_type)
+	{
+		if (monster_type == 1) return weak_monster.get_weapon_drop();
+		else if (monster_type == 2) return medium_monster.get_weapon_drop();
+		else if (monster_type == 3) return strong_monster.get_weapon_drop();
+		else return 0.0;
 	}
 }

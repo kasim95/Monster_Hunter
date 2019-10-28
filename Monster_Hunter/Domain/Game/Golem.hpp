@@ -17,7 +17,7 @@ namespace Domain::Game
 
 	inline void Golem::reset_monster()
 	{
-		max_health = 30 * 3;
+		max_health = 200 * 3;
 		current_health = max_health;
 		damage = 6 * 3;
 		monster_name = "GOLEM";

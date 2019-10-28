@@ -17,5 +17,8 @@ namespace UI
 		void launch();
 		std::string takeinput();
 		void disp_map();
+		bool battle(int monster_type); // 1 for weak, 2 for medium, 3 for strong, 4 for dragon
+		void disp_battle(bool char_turn, double char_health, double monster_health); //incomplete
+		void weapon_drop(int monster_type);
 	};
 }

@@ -17,7 +17,7 @@ namespace Domain::Game
 
 	inline void Orc::reset_monster()
 	{
-		max_health = 30 * 2;
+		max_health = 200 * 2;
 		current_health = max_health;
 		damage = 6 * 2;
 		monster_name = "ORC";
