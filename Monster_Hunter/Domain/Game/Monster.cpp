@@ -4,20 +4,23 @@ namespace Domain::Game
 {
 	Monster::Monster()
 	{
-		max_health = 30;
-		current_health = 30;
-		base_damage = 8;
-		damage = base_damage;
+		max_health = 1;
+		current_health = max_health;
+		damage = 8;
 		monster_name = "NA";
-		weapon_drop = 10;
+		weapon_drop = 0;
 	}
 
 	Monster::~Monster() noexcept
-	{
-	}
+	{}
 
 	int Monster::get_max_health() {
 		return max_health;
+	}
+
+	void Monster::set_max_health(const int value)
+	{
+		max_health = value;
 	}
 
 	int Monster::get_current_health() {
@@ -28,12 +31,9 @@ namespace Domain::Game
 		current_health = value;
 	}
 
-	int Monster::get_base_damage() {
-		return base_damage;
-	}
-
-	void Monster::set_base_damage(const int value) {
-		base_damage = value;
+	void Monster::set_damage(const int value)
+	{
+		damage = value;
 	}
 
 	int Monster::get_damage() {

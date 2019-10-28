@@ -101,4 +101,8 @@ namespace Domain::Game
 	{
 		return _map;
 	}
+	std::string Map::get_previous_char()
+	{
+		return previous_char;
+	}
 }

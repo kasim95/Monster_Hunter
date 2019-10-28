@@ -11,6 +11,10 @@ namespace Domain::Game
 		player_character->calculate_damage();
 		time1 = clock();
 		time2 = time1;
+		weak_monster.reset_monster();
+		medium_monster.reset_monster();
+		strong_monster.reset_monster();
+		dragon_monster.reset_monster();
 	}
 
 	GameSession::GameSession(Character * selected_character)
@@ -20,6 +24,10 @@ namespace Domain::Game
 		player_character->calculate_damage();
 		time1 = clock();
 		time2 = time1;
+		weak_monster.reset_monster();
+		medium_monster.reset_monster();
+		strong_monster.reset_monster();
+		dragon_monster.reset_monster();
 	}
 
 	bool GameSession::usePotion()

@@ -6,6 +6,7 @@
 #include "Assassin.hpp"
 #include "Warrior.hpp"
 #include "Mage.hpp"
+#include "Monster.hpp"
 #include "Goblin.hpp"
 #include "Orc.hpp"
 #include "Golem.hpp"
@@ -19,10 +20,10 @@ namespace Domain::Game
 	private:
 		std::array<int, 2> player_position;
 		Character* player_character;
-		//Goblin weak_monster;
-		//Orc medium_monster;
-		//Golem strong_monster;
-		//Dragon dragon_monster;
+		Goblin weak_monster;
+		Orc medium_monster;
+		Golem strong_monster;
+		Dragon dragon_monster;
 		Map map;
 		clock_t time1;
 		clock_t time2;

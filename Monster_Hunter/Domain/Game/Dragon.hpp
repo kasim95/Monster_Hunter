@@ -9,23 +9,20 @@ namespace Domain::Game
 	{
 	public:
 		~Dragon() noexcept override;
-		void set_damage() override;
-		void set_image() override;
-		void set_max_health() override;
-
+		void reset_monster() override;
 	};
 	//inline implementation
 	inline Dragon::~Dragon() noexcept
+	{}
+
+	inline void Dragon::reset_monster()
 	{
-	}
-
-	inline void Dragon::set_damage() {
-		damage = base_damage * 4;
-	}
-
-	inline void Dragon::set_image() {
-		//placeholder code
-		//change later once the images are finalized
+		max_health = 30 * 10;
+		current_health = max_health;
+		damage = 6 * 7;
+		monster_name = "DRAGON";
+		weapon_drop = 10 * 0;
+		//enter code to set image
 		for (int i = 0; i < 20; ++i)
 		{
 			for (int j = 0; j < 20; ++j)
@@ -34,9 +31,4 @@ namespace Domain::Game
 			}
 		}
 	}
-
-	inline void Dragon::set_max_health() {
-		max_health = 30 * 4;
-	}
-
 }

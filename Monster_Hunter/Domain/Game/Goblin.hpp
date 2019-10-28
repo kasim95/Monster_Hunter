@@ -9,23 +9,20 @@ namespace Domain::Game
 		{
 		public:
 			~Goblin() noexcept override;
-			void set_damage() override;
-			void set_image() override;
-			void set_max_health() override;
-
+			void reset_monster() override;
 		};
 	//inline implementation
 	inline Goblin::~Goblin() noexcept
+	{}
+
+	inline void Goblin::reset_monster()
 	{
-	}
-
-	inline void Goblin::set_damage() {
-		damage = base_damage * 1;
-	}
-
-	inline void Goblin::set_image() {
-		//placeholder code
-		//change later once the images are finalized
+		max_health = 30 * 1;
+		current_health = max_health;
+		damage = 6 * 1;
+		monster_name = "GOBLIN";
+		weapon_drop = 10 * 1;
+		//enter code to set image
 		for (int i = 0; i < 20; ++i)
 		{
 			for (int j = 0; j < 20; ++j)
@@ -33,9 +30,5 @@ namespace Domain::Game
 				image[i][j] = std::to_string(j);
 			}
 		}
-	}
-
-	inline void Goblin::set_max_health() {
-		max_health = 30 * 1;
 	}
 }

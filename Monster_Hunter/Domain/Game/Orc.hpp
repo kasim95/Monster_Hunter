@@ -8,23 +8,21 @@ namespace Domain::Game
 	{
 	public:
 		~Orc() noexcept override;
-		void set_damage() override;
-		void set_image() override;
-		void set_max_health() override;
-
+		void reset_monster() override;
 	};
 	//inline implementation
 	inline Orc::~Orc() noexcept
 	{
 	}
 
-	inline void Orc::set_damage() {
-		damage = base_damage * 2;
-	}
-
-	inline void Orc::set_image() {
-		//placeholder code
-		//change later once the images are finalized
+	inline void Orc::reset_monster()
+	{
+		max_health = 30 * 2;
+		current_health = max_health;
+		damage = 6 * 2;
+		monster_name = "ORC";
+		weapon_drop = 10 * 2;
+		//enter code to set image
 		for (int i = 0; i < 20; ++i)
 		{
 			for (int j = 0; j < 20; ++j)
@@ -32,9 +30,5 @@ namespace Domain::Game
 				image[i][j] = std::to_string(j);
 			}
 		}
-	}
-
-	inline void Orc::set_max_health() {
-		max_health = 30 * 2;
 	}
 }

@@ -9,23 +9,20 @@ namespace Domain::Game
 	{
 	public:
 		~Golem() noexcept override;
-		void set_damage() override;
-		void set_image() override;
-		void set_max_health() override;
-
+		void reset_monster() override;
 	};
 	//inline implementation
 	inline Golem::~Golem() noexcept
+	{}
+
+	inline void Golem::reset_monster()
 	{
-	}
-
-	inline void Golem::set_damage() {
-		damage = base_damage * 3;
-	}
-
-	inline void Golem::set_image() {
-		//placeholder code
-		//change later once the images are finalized
+		max_health = 30 * 3;
+		current_health = max_health;
+		damage = 6 * 3;
+		monster_name = "GOLEM";
+		weapon_drop = 10 * 3;
+		//enter code to set image
 		for (int i = 0; i < 20; ++i)
 		{
 			for (int j = 0; j < 20; ++j)
@@ -34,9 +31,4 @@ namespace Domain::Game
 			}
 		}
 	}
-
-	inline void Golem::set_max_health() {
-		max_health = 30 * 3;
-	}
-
 }

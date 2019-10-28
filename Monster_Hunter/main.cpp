@@ -174,8 +174,8 @@ int main()
 //	test_assassin();
 //	test_warrior();
 //	test_mage();
-//	test_gamesession_move_character();
-//	test_gamesession_select_character();
+	test_gamesession_move_character();
+	test_gamesession_select_character();
 //	test_game_equip_weapon();
 //	test_shop();
 //	test_payment_handler();

@@ -16,5 +16,6 @@ namespace Domain::Game
 		std::array<int, 2> get_previous_char_pos();
 		void set_previous_char_pos(std::array<int, 2> value);
 		std::array<std::array<std::string, 30>, 15> get_map();
+		std::string get_previous_char();
 	};
 }

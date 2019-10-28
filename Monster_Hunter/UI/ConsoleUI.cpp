@@ -7,7 +7,7 @@
 
 #include "ConsoleUI.hpp"
 #include "../Domain/AccountManagement/UserAccounts.hpp"
-#include "../Domain/Game/GameSession.hpp"
+#include "../Domain/Menu/SessionHandler.hpp"
 #include "../TechnicalServices/Logging/LoggerHandler.hpp"
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
@@ -39,7 +39,7 @@ namespace UI
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 			std::string userName;
-			std::cout << " Enter you  username: ";
+			std::cout << " Enter your username: ";
 			std::getline(std::cin, userName);
 
 			std::string passPhrase;
@@ -70,10 +70,19 @@ namespace UI
 		} while (true);
 
 		//enter menu code for play game, shop, help etc
+		std::unique_ptr<Domain::Menu::SessionHandler> sessionControl = Domain::Menu::SessionHandler::createSession(selectedRole);
+		std::vector<std::string> commands = sessionControl->getCommands();
+		unsigned menuSelection;
+		do
+		{
+			for (unsigned i = 0; i != commands.size(); ++i) std::cout << std::setw(2) << i << " - " << commands[i] << '\n';
+			std::cout << "  role (0-" << commands.size() - 1 << "): ";
+			std::cin >> menuSelection;
+		} while (menuSelection >= roleLegalValues.size());
 
+		std::string selectedCommand = commands[menuSelection];
+		_logger << "Selected command \"" + selectedCommand + "\" chosen";
 	}
-
-
 }
 
 
