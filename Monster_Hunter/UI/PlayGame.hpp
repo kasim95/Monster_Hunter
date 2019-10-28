@@ -4,6 +4,7 @@
 
 #include "../Domain/Game/GameSession.hpp"
 #include "../Domain/Game/Character.hpp"
+#include "../TechnicalServices/Payment/PaymentService.hpp"
 
 namespace UI
 {
@@ -11,6 +12,7 @@ namespace UI
 	{
 	private:
 		Domain::Game::GameSession gamesess;
+		TechnicalServices::Payment::PaymentService payservice; //delete this later and implement character selection and check if purchase was made in ConsoleUI class launch method
 	public:
 		PlayGame();
 		~PlayGame() = default;

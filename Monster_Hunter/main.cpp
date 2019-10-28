@@ -13,6 +13,7 @@
 #include "Domain/Shop/Shop.hpp"
 #include "TechnicalServices/Payment/PaymentService.hpp"
 #include "UI/PlayGame.hpp"
+#include "UI/ConsoleUI.hpp"
 
 void test_map()
 {
@@ -174,6 +175,11 @@ void test_play_game()
 	playgame.launch();
 }
 
+void test_console_ui()
+{
+	UI::ConsoleUI consoleui;
+	consoleui.launch();
+}
 
 int main()
 {
@@ -187,7 +193,8 @@ int main()
 //	test_game_equip_weapon();
 //	test_shop();
 //	test_payment_handler();
-	test_play_game();
+//	test_play_game();
+	test_console_ui();
 	return 0;
 }
 

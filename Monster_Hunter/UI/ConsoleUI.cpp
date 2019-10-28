@@ -4,6 +4,7 @@
 #include <memory>
 #include <string>
 #include <vector>
+#include <stdlib.h>
 
 #include "ConsoleUI.hpp"
 #include "../Domain/AccountManagement/UserAccounts.hpp"
@@ -11,6 +12,7 @@
 #include "../TechnicalServices/Logging/LoggerHandler.hpp"
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
+#include "PlayGame.hpp";
 
 namespace UI
 {
@@ -39,7 +41,7 @@ namespace UI
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
 			std::string userName;
-			std::cout << " Enter your username: ";
+			std::cout << "Enter your username: ";
 			std::getline(std::cin, userName);
 
 			std::string passPhrase;
@@ -72,16 +74,46 @@ namespace UI
 		//enter menu code for play game, shop, help etc
 		std::unique_ptr<Domain::Menu::SessionHandler> sessionControl = Domain::Menu::SessionHandler::createSession(selectedRole);
 		std::vector<std::string> commands = sessionControl->getCommands();
-		unsigned menuSelection;
+		//unsigned menuSelection;
+		char menuSelection;
 		do
 		{
-			for (unsigned i = 0; i != commands.size(); ++i) std::cout << std::setw(2) << i << " - " << commands[i] << '\n';
+			for (unsigned i = 0; i < commands.size(); ++i)
+			{
+				std::cout << std::setw(2) << i << " - " << commands[i] << '\n';
+			}
 			std::cout << "  role (0-" << commands.size() - 1 << "): ";
 			std::cin >> menuSelection;
-		} while (menuSelection >= roleLegalValues.size());
+			menuSelection -= 48;
+		} while (menuSelection >= commands.size());
 
 		std::string selectedCommand = commands[menuSelection];
 		_logger << "Selected command \"" + selectedCommand + "\" chosen";
+		if (selectedCommand == "Start Game")
+		{
+			UI::PlayGame * playgame = new UI::PlayGame;
+			playgame->disp_map();
+			playgame->launch();
+		}
+		else if (selectedCommand == "Quit Game")
+		{
+			std::cout << "Exiting....";
+			exit;
+		}
+		else if (selectedCommand == "Scores")
+		{
+			//enter code to show scores
+			int y = 1;
+		}
+		else if (selectedCommand == "Help")
+		{
+			//enter code to show help
+		}
+		else if (selectedCommand == "Shop")
+		{
+			//discard shop
+		}
+		else;
 	}
 }
 
