@@ -2,6 +2,7 @@
 
 namespace Domain::Game
 {
+	/*
 	GameSession::GameSession()
 	{
 		//Character* player_character = new Assassin();
@@ -16,6 +17,7 @@ namespace Domain::Game
 		strong_monster.reset_monster();
 		dragon_monster.reset_monster();
 	}
+	*/
 
 	GameSession::GameSession(Character * selected_character)
 	{
@@ -245,6 +247,14 @@ namespace Domain::Game
 	}
 	double GameSession::get_player_attributes()
 	{
-		return player_character->get_attributes() +  player_character->get_weapon_attributes();
+		return player_character->get_attributes();
+	}
+	std::string GameSession::get_character_weapon_name()
+	{
+		return player_character->get_weapon_name();
+	}
+	int GameSession::get_character_weapon_attributes()
+	{
+		return player_character->get_weapon_attributes();
 	}
 }

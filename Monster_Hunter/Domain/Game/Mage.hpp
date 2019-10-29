@@ -19,7 +19,7 @@ namespace Domain::Game
 	inline Mage::Mage()
 	{
 		name = "MAGE";
-		weapon_name = "Staff";
+		weapon_name = "STAFF";
 		attributes = 10;
 		max_health = 80;
 		current_health = max_health;

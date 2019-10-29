@@ -19,7 +19,7 @@ namespace Domain::Game
 	inline Warrior::Warrior()
 	{
 		name = "WARRIOR";
-		weapon_name = "Claymore";
+		weapon_name = "CLAYMORE";
 		attributes = 10;
 		max_health = 150;
 		current_health = max_health;

@@ -168,12 +168,16 @@ void test_payment_handler()
 	std::cout << payservice.purchaseItem("100A") << std::endl;
 }
 
+
 void test_play_game()
 {
-	UI::PlayGame playgame;
+
+	Domain::Game::Character * _char = new Domain::Game::Assassin();
+	UI::PlayGame playgame(_char);
 	playgame.disp_map();
-	playgame.launch();
+	std::cout << playgame.launch();
 }
+
 
 void test_console_ui()
 {
@@ -183,7 +187,7 @@ void test_console_ui()
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+//    std::cout << "Hello World!\n"; 
 //	test_map();
 //	test_assassin();
 //	test_warrior();
@@ -193,8 +197,8 @@ int main()
 //	test_game_equip_weapon();
 //	test_shop();
 //	test_payment_handler();
-	test_play_game();
-//	test_console_ui();
+//	test_play_game();
+	test_console_ui();
 	return 0;
 }
 

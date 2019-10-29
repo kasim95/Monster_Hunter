@@ -28,7 +28,7 @@ namespace Domain::Game
 		clock_t time1;
 		clock_t time2;
 	public:
-		GameSession();
+		GameSession() = default;
 		GameSession(Character* selected_character);
 		~GameSession() = default;
 		bool usePotion();
@@ -51,5 +51,7 @@ namespace Domain::Game
 		double get_monster_health_percentage(int monster_type);
 		std::string get_character_name();
 		double get_player_attributes();
+		std::string get_character_weapon_name();
+		int get_character_weapon_attributes();
 	};
 }

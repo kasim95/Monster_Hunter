@@ -8,8 +8,9 @@
 //#include <curses.h>
 namespace UI
 {
-	PlayGame::PlayGame()
+	PlayGame::PlayGame(Domain::Game::Character * _char)
 	{
+		/*
 		char _character;
 		int chartoint = 100;
 		do
@@ -25,14 +26,14 @@ namespace UI
 				chartoint = 100;
 			}	
 		} while (!(chartoint == 1 || chartoint == 2 || chartoint == 3));
-
-		if (chartoint == 1)
+		
+		if (character_no == 1)
 		{
 			Domain::Game::Assassin * z = new Domain::Game::Assassin();
 			Domain::Game::GameSession _gamesess(z);
 			gamesess = _gamesess;
 		}
-		else if (chartoint == 2)
+		else if (character_no == 2)
 		{
 			Domain::Game::Warrior * z = new Domain::Game::Warrior;
 			Domain::Game::GameSession _gamesess(z);
@@ -44,9 +45,13 @@ namespace UI
 			Domain::Game::GameSession _gamesess(z);
 			gamesess = _gamesess;
 		}
+		*/
+		Domain::Game::GameSession _gamesess(_char);
+		gamesess = _gamesess;
+	
 	}
 	
-	void PlayGame::launch()
+	double PlayGame::launch()
 	{
 		bool playeralive = true;
 		bool dragonalive = true;
@@ -78,20 +83,19 @@ namespace UI
 				else if (previous_char == 'S') battle(3);
 				else if (previous_char == 'D') battle(4);
 				else;			//do nothing
-				//gamesess.reset_all_monsters();
 			}
 			else;
 			//if playerdead end
 			if (!gamesess.is_player_alive()) playeralive = false;
 			if (!gamesess.is_dragon_alive()) dragonalive = false;
 		}
-		if (playeralive == false) std::cout << "\nGAME OVER"; std::cout << "\nScore is: 0";
-		if (dragonalive == false)
+		if (playeralive == false) return 0.0;
+		else if (dragonalive == false)
 		{
-			std::cout << "\nYOU WIN";
 			gamesess.end_game();
-			std::cout << "\nScore is: " << gamesess.calculate_score();
+			return gamesess.calculate_score();
 		}
+		else;
 	}
 
 	void PlayGame::disp_map()
@@ -99,6 +103,7 @@ namespace UI
 		std::array<std::array<std::string, 30>, 15> _map = gamesess.return_map();
 		system("cls");		//to clear screen
 		std::cout << "\nMONSTER HUNTER MAP\n";
+		std::cout << "\nCharacter: " << gamesess.get_character_name() << std::endl;
 		for (int i = 0; i < 15; ++i)
 		{
 			for (int j = 0; j < 30; ++j)
@@ -107,7 +112,9 @@ namespace UI
 			}
 			std::cout << std::endl;
 		}
-		std::cout << "\nRemaining Potions: " << gamesess.get_no_of_potions() << " | Player Health: " << gamesess.get_player_health_percentage() << "% | " << "Player's Attributes: " << gamesess.get_player_attributes() << " | Player Damage: " << gamesess.get_player_damage()  << "\n";
+		std::cout << "\nRemaining Potions: " << gamesess.get_no_of_potions() << " | Player Health: " << gamesess.get_player_health_percentage() << "% | " << "Player's Attributes: " << gamesess.get_player_attributes() << std::endl;
+		std::cout << "Weapon Equipped: " << gamesess.get_character_weapon_name() << " | Weapon Attributes: " << gamesess.get_character_weapon_attributes() << std::endl;
+		std::cout << "Player Total Damage: " << gamesess.get_player_damage() << std::endl;
 		std::cout << "\nLEGEND: @ = Character position, C = Campfire, W = Weak Monster, M = Medium Monster, S = Strong Monster, D = Dragon\n";
 		std::cout << "\nCONTROLS: W - Up, S - Down, A - Left, D - Right, F - Enter Camp, Z - Use Potion\n";
 	}
@@ -164,7 +171,7 @@ namespace UI
 		else
 		{
 			if (monster_health <= 0.0) std::cout << "\nPlayer WON\n";
-			else std::cout << "\nMonster WON\n";
+			else std::cout << "\n" + gamesess.get_monster_name(monster_type) + " WON\n";
 		}
 		std::cout << "\nCONTROLS: G - Attack\n";
 	}

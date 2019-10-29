@@ -12,11 +12,15 @@
 #include "../TechnicalServices/Logging/LoggerHandler.hpp"
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
+
 #include "PlayGame.hpp";
+#include "../Domain/Game/Character.hpp"
+#include "../Domain/Game/Assassin.hpp"
+#include "../Domain/Game/Warrior.hpp"
+#include "../Domain/Game/Mage.hpp"
 
 namespace UI
 {
-	
 	ConsoleUI::ConsoleUI()
 		: _accounts(std::make_unique<Domain::AccountManagement::UserAccounts>() ),
 		_loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>() ),
@@ -84,7 +88,7 @@ namespace UI
 			}
 			std::cout << "  role (0-" << commands.size() - 1 << "): ";
 			std::cin >> menuSelection;
-			menuSelection -= 48;
+			menuSelection -= 48;	//convert menuSelection to int
 		} while (menuSelection >= commands.size());
 
 		std::string selectedCommand = commands[menuSelection];
@@ -93,10 +97,38 @@ namespace UI
 		{
 			_logger << "Game started";
 			//
-			//imolement 
-			UI::PlayGame * playgame = new UI::PlayGame;
+			char _character;
+			int chartoint = 100;
+			do
+			{
+				try
+				{
+					std::cout << "Enter Character (1-3) for Characters (1 for Assassin, 2 for Warrior, 3 for Mage): ";
+					std::cin >> _character;
+					chartoint = _character - 48;	//convert char to int
+					if (chartoint == 3)
+					{
+						//enter code to check if Mage is purchased
+						//if yes break;
+						//else display purchase options and purchase it
+					}
+				}
+				catch (...)
+				{
+					chartoint = 100;
+				}
+			//} while (!(chartoint == 1 || chartoint == 2 || chartoint == 3));
+			} while (!(chartoint == 1 || chartoint == 2));
+
+			UI::PlayGame * playgame;
+			if (chartoint == 3) playgame = new UI::PlayGame(new Domain::Game::Mage());
+			else if (chartoint == 2) playgame = new UI::PlayGame(new Domain::Game::Warrior());
+			else playgame = new UI::PlayGame(new Domain::Game::Assassin());
+			//UI::PlayGame * playgame = new UI::PlayGame;
 			playgame->disp_map();
-			playgame->launch();
+			double score = playgame->launch();
+			if (score > 0.0) std::cout << "\nYOU WIN\nScore is " << score << std::endl << std::endl;
+			else std::cout << "\nGAME OVER\nYOU LOSE\nScore is 0" << std::endl << std::endl;
 		}
 		else if (selectedCommand == "Quit Game")
 		{
