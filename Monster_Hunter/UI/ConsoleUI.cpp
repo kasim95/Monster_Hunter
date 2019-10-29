@@ -12,7 +12,8 @@
 #include "../TechnicalServices/Logging/LoggerHandler.hpp"
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
-
+#include "../TechnicalServices/Payment/PaymentService.hpp"
+#include "../Domain/Shop/Shop.hpp"
 #include "PlayGame.hpp";
 #include "../Domain/Game/Character.hpp"
 #include "../Domain/Game/Assassin.hpp"
@@ -25,6 +26,7 @@ namespace UI
 		: _accounts(std::make_unique<Domain::AccountManagement::UserAccounts>() ),
 		_loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>() ),
 		_persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>() )
+		//_paymentService(std::make_unique<TechnicalServices::Payment::PaymentService>())
 	{
 		_logger << "Simple UI being used and has been successfully initialized";
 	}
@@ -39,7 +41,11 @@ namespace UI
 	{
 		std::vector<std::string> roleLegalValues = _persistentData->findRoles();
 		std::string selectedRole;
+		std::string username;
+		TechnicalServices::Payment::PaymentService _purchase_history;
+		Domain::Shop::Shop _item;
 
+		
 		do 
 		{
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -67,6 +73,7 @@ namespace UI
 
 			if (_accounts->isAuthenticated({ userName, passPhrase, {selectedRole} }))
 			{
+				username = userName;
 				_logger << "Login Successful for \"" + userName + "\" as role \"" + selectedRole + "\"";
 				break;
 			}
@@ -108,10 +115,28 @@ namespace UI
 					chartoint = _character - 48;	//convert char to int
 					if (chartoint == 3)
 					{
+						if (_purchase_history.findPurchaseByName(username))
+						{
+							break;
+						}
+						
+						for (int i = 0; i < 1; ++i)
+							std::cout << "Items available for purchase\n" << i + 1 << " : " << _item.display_item()[i].name << std::endl;
+
+							int choice;
+							std::cout << "Select the item number you want to purchase \n";
+							std::cin >> choice;
+							if (choice <= _item.display_item().size() && _purchase_history.purchaseItem(_item.display_item()[choice].id))
+							{
+								std::cout << "Successfully purchased the item\n";
+							}
+								std::cout << "Purchase process didn't go through\n";
+						//done	
 						//enter code to check if Mage is purchased
 						//if yes break;
 						//else display purchase options and purchase it
 					}
+
 				}
 				catch (...)
 				{

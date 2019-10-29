@@ -20,6 +20,6 @@ namespace Domain::Shop
 		Shop();
 		~Shop() = default;
 		bool purchase(std::string item_id);
-		std::array<Item, 1> display_item(std::string item_id);
+		std::array<Item, 1> display_item();
 	};
 }

@@ -25,7 +25,7 @@ namespace Domain::Shop
 		return false;
 	}
 
-	std::array<Item, 1> Shop::display_item(std::string item_id)
+	std::array<Item, 1> Shop::display_item()
 	{
 		return items;
 	}
