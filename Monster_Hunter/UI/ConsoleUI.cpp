@@ -5,6 +5,7 @@
 #include <string>
 #include <vector>
 #include <stdlib.h>
+#include <vector>
 
 #include "ConsoleUI.hpp"
 #include "../Domain/AccountManagement/UserAccounts.hpp"
@@ -19,6 +20,7 @@
 #include "../Domain/Game/Assassin.hpp"
 #include "../Domain/Game/Warrior.hpp"
 #include "../Domain/Game/Mage.hpp"
+#include "../Domain/Game/GameSession.hpp"
 
 namespace UI
 {
@@ -100,6 +102,7 @@ namespace UI
 
 		std::string selectedCommand = commands[menuSelection];
 		_logger << "Selected command \"" + selectedCommand + "\" chosen";
+		std::vector<double> Scores;
 		if (selectedCommand == "Start Game")
 		{
 			_logger << "Game started";
@@ -152,6 +155,7 @@ namespace UI
 			//UI::PlayGame * playgame = new UI::PlayGame;
 			playgame->disp_map();
 			double score = playgame->launch();
+			Scores.push_back(score);
 			if (score > 0.0) std::cout << "\nYOU WIN\nScore is " << score << std::endl << std::endl;
 			else std::cout << "\nGAME OVER\nYOU LOSE\nScore is 0" << std::endl << std::endl;
 		}
@@ -164,6 +168,9 @@ namespace UI
 		{
 			_logger << "Displaying Scores";
 			//enter code to show scores
+			std::cout << "Your scores history are: \n";
+			for (int i = Scores.size() - 1; i >= 0; --i)
+				std::cout << Scores[i] << "\n";
 		}
 		else if (selectedCommand == "Help")
 		{
