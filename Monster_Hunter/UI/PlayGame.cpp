@@ -78,25 +78,20 @@ namespace UI
 				else if (previous_char == 'S') battle(3);
 				else if (previous_char == 'D') battle(4);
 				else;			//do nothing
-				gamesess.reset_all_monsters();
+				//gamesess.reset_all_monsters();
 			}
 			else;
 			//if playerdead end
 			if (!gamesess.is_player_alive()) playeralive = false;
 			if (!gamesess.is_dragon_alive()) dragonalive = false;
 		}
-		if (playeralive == false) std::cout << "\nGAME OVER";
-		if (dragonalive == false) std::cout << "\nYOU WIN";
-		gamesess.end_game();
-		std::cout << "\nScore is: " << gamesess.calculate_score();			
-	}
-
-	std::string PlayGame::takeinput()
-	{
-		char _input;
-		//wait for user input
-		std::cin >> _input;
-		return std::string();
+		if (playeralive == false) std::cout << "\nGAME OVER"; std::cout << "\nScore is: 0";
+		if (dragonalive == false)
+		{
+			std::cout << "\nYOU WIN";
+			gamesess.end_game();
+			std::cout << "\nScore is: " << gamesess.calculate_score();
+		}
 	}
 
 	void PlayGame::disp_map()
@@ -142,6 +137,7 @@ namespace UI
 			if (gamesess.get_monster_health_percentage(monster_type) <= 0.0)
 			{
 				if (monster_type != 4) weapon_drop(monster_type);
+				gamesess.reset_monster(monster_type);
 				return true;
 			}
 		}
@@ -175,11 +171,14 @@ namespace UI
 
 	void PlayGame::weapon_drop(int monster_type)
 	{
+		char _input3 = '_';
 		std::cout << "\nWeapon dropped by monster with " << gamesess.get_weapon_drop_attributes(monster_type) << " attributes";
-		std::cout << "\nDo you want to pick up the weapon? (Y/N): ";
-		char _input3;
-		std::cin >> _input3;
-		_input3 = toupper(_input3);
-		if (_input3 == 'Y') gamesess.equip_weapon(gamesess.get_weapon_drop_attributes(1));
+		while (!( _input3 == 'Y' || _input3 == 'N'))
+		{
+			std::cout << "\nDo you want to pick up the weapon? (Y/N): ";
+			std::cin >> _input3;
+			_input3 = toupper(_input3);
+		}
+		if (_input3 == 'Y') gamesess.equip_weapon(gamesess.get_weapon_drop_attributes(monster_type));
 	}
 }

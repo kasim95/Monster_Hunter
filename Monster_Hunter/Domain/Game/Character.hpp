@@ -28,7 +28,7 @@ namespace Domain::Game
 		virtual ~Character() noexcept = 0;
 		void equip_Weapon(double value, double value_health);
 		virtual void calculate_damage() = 0;
-		double get_total_attributes();
+		double get_attributes();
 		void set_attributes(const double value);
 		double get_max_health();
 		void set_max_health(const double value);

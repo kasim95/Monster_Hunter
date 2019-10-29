@@ -43,7 +43,7 @@ namespace Domain::Game
 		double get_player_health_percentage();
 		char get_previous_char();
 		int get_no_of_potions();
-		void reset_all_monsters();
+		void reset_monster(int monster_type);
 		double get_weapon_drop_attributes(int monster_type);
 		bool is_player_alive();
 		bool is_dragon_alive();

@@ -12,10 +12,9 @@ namespace Domain::Game
 		calculate_damage();
 	}
 
-
-	double Character::get_total_attributes()
+	double Character::get_attributes()
 	{
-		return attributes + weapon_attributes;
+		return attributes;
 	}
 
 	void Character::set_attributes(const double value)

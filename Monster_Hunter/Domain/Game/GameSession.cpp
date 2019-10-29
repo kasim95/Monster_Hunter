@@ -36,6 +36,8 @@ namespace Domain::Game
 		if (potions > 0)
 		{
 			player_character->set_potion(potions - 1);
+			player_character->set_current_health(player_character->get_max_health());
+			player_character->set_attributes(player_character->get_attributes() + 30);
 			return true;
 		}
 		return false;
@@ -191,11 +193,12 @@ namespace Domain::Game
 		return player_character->get_potion();
 	}
 
-	void GameSession::reset_all_monsters()
+	void GameSession::reset_monster(int monster_type)
 	{
-		weak_monster.reset_monster();
-		medium_monster.reset_monster();
-		strong_monster.reset_monster();
+		if (monster_type == 1) weak_monster.reset_monster();
+		else if (monster_type == 2) medium_monster.reset_monster();
+		else if (monster_type == 3) strong_monster.reset_monster();
+		else;
 	}
 
 	double GameSession::get_weapon_drop_attributes(int monster_type)
@@ -242,6 +245,6 @@ namespace Domain::Game
 	}
 	double GameSession::get_player_attributes()
 	{
-		return player_character->get_total_attributes();
+		return player_character->get_attributes() +  player_character->get_weapon_attributes();
 	}
 }
