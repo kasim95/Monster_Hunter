@@ -2,39 +2,20 @@
 
 namespace Domain::Game
 {
-	Character::Character()
-	{
-		name = "NA";
-		weapon_name = "NA";
-		attributes = 10;
-		max_health = 100;
-		current_health = max_health;
-		potion = 3;
-		base_damage = 10;
-		damage = base_damage;
-		weapon_attributes = 10;
-	}
-
 	Character::~Character() noexcept
 	{}
 
-	void Character::gain_Attribute(double value, double value_health)
+	void Character::equip_Weapon(double value, double value_health)
 	{
-		attributes += value;
+		weapon_attributes = value;
 		max_health += value_health;
 		calculate_damage();
 	}
 
-	void Character::equip_Weapon(double wa, std::string wn)
-	{
-		weapon_attributes = wa;
-		weapon_name = wn;
-		attributes += weapon_attributes;
-	}
 
-	double Character::get_attributes()
+	double Character::get_total_attributes()
 	{
-		return 0;
+		return attributes + weapon_attributes;
 	}
 
 	void Character::set_attributes(const double value)

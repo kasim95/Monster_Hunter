@@ -6,6 +6,7 @@ namespace Domain::Game
 	class Mage : public Domain::Game::Character
 	{
 	public:
+		Mage();
 		void calculate_damage() override;
 		~Mage() noexcept override;
 		void set_image() override;
@@ -14,6 +15,19 @@ namespace Domain::Game
 	//Inline implementation
 	inline Mage::~Mage() noexcept
 	{}
+
+	inline Mage::Mage()
+	{
+		name = "MAGE";
+		weapon_name = "Staff";
+		attributes = 10;
+		max_health = 80;
+		current_health = max_health;
+		potion = 3;
+		base_damage = 20;
+		damage = base_damage;
+		weapon_attributes = 10;
+	}
 
 	inline void Mage::calculate_damage()
 	{

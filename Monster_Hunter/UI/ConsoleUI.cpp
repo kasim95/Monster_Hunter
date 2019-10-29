@@ -91,26 +91,31 @@ namespace UI
 		_logger << "Selected command \"" + selectedCommand + "\" chosen";
 		if (selectedCommand == "Start Game")
 		{
+			_logger << "Game started";
+			//
+			//imolement 
 			UI::PlayGame * playgame = new UI::PlayGame;
 			playgame->disp_map();
 			playgame->launch();
 		}
 		else if (selectedCommand == "Quit Game")
 		{
-			std::cout << "Exiting....";
-			exit;
+			_logger << "Game quit";
+			_Exit(10);
 		}
 		else if (selectedCommand == "Scores")
 		{
+			_logger << "Displaying Scores";
 			//enter code to show scores
-			int y = 1;
 		}
 		else if (selectedCommand == "Help")
 		{
+			_logger << "Displaying Help";
 			//enter code to show help
 		}
 		else if (selectedCommand == "Shop")
 		{
+			_logger << "Shop opened";
 			//discard shop
 		}
 		else;

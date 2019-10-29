@@ -2,15 +2,6 @@
 
 namespace Domain::Game
 {
-	Monster::Monster()
-	{
-		max_health = 100;
-		current_health = max_health;
-		damage = 8;
-		monster_name = "NA";
-		weapon_drop = 0;
-	}
-
 	Monster::~Monster() noexcept
 	{}
 

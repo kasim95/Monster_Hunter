@@ -17,7 +17,7 @@ namespace Domain::Game
 		Monster & operator=(Monster && rhs) = default;
 
 	public:
-		Monster();
+		Monster() = default;
 		Monster(const Monster & original) = default;	//copy constructor
 		Monster(Monster && original) = default;
 		virtual ~Monster() noexcept = 0;

@@ -21,15 +21,14 @@ namespace Domain::Game
 		Character & operator=(const Character & rhs) = default;	//Assignment operator
 		Character & operator=(Character && rhs) = default;		//Move constructor can be removed later
 	public:
-		Character();
+		Character() = default;
 		Character(const Character & original) = default;	//Copy const
 		Character(Character && original) = default;			//Move Constructor can be removed later
 		//~Character() = default;					//Virtual Destructor
 		virtual ~Character() noexcept = 0;
-		void gain_Attribute(double value, double value_health);
-		void equip_Weapon(double wa, std::string wn);
+		void equip_Weapon(double value, double value_health);
 		virtual void calculate_damage() = 0;
-		double get_attributes();
+		double get_total_attributes();
 		void set_attributes(const double value);
 		double get_max_health();
 		void set_max_health(const double value);

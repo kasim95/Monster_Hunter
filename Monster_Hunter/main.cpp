@@ -193,8 +193,8 @@ int main()
 //	test_game_equip_weapon();
 //	test_shop();
 //	test_payment_handler();
-//	test_play_game();
-	test_console_ui();
+	test_play_game();
+//	test_console_ui();
 	return 0;
 }
 

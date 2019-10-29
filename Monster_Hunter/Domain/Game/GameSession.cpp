@@ -41,16 +41,22 @@ namespace Domain::Game
 		return false;
 	}
 
-	void GameSession::heal_using_campfire()
+	void GameSession::heal_using_campfire(double percentage)
 	{
+		
 		double max_health = player_character->get_max_health();
 		double curr_health = player_character->get_current_health();
+		/*
 		while (curr_health < max_health)
 		{
 			curr_health += max_health * 0.1;
 			if (curr_health > max_health) { curr_health = max_health; }
 			player_character->set_current_health(curr_health);
 		}
+		*/
+		curr_health += max_health * (percentage/100);
+		if (curr_health > max_health) { curr_health = max_health; }
+		player_character->set_current_health(curr_health);
 	}
 
 	void GameSession::move_character(int direction)
@@ -147,7 +153,9 @@ namespace Domain::Game
 	{
 		double elapsed_secs = double(time2 - time1);
 		//enter formula to calculate score
-		return elapsed_secs;
+		double minutes;
+		minutes = elapsed_secs / 60000;
+		return minutes;
 	}
 
 	std::array<std::array<std::string, 30>, 15> GameSession::return_map()
@@ -155,10 +163,10 @@ namespace Domain::Game
 		return map.get_map();
 	}
 
-	bool GameSession::equip_weapon(int weapon_attributes)
+	bool GameSession::equip_weapon(double weapon_attributes)
 	{
 //		player_character->set_weapon_attributes(weapon_attributes);
-		player_character->gain_Attribute(weapon_attributes, 0);
+		player_character->equip_Weapon(weapon_attributes, 0);
 		player_character->calculate_damage();
 		return true;
 	}
@@ -172,36 +180,24 @@ namespace Domain::Game
 	{
 		return (player_character->get_current_health() * 100) / (player_character->get_max_health());
 	}
+
 	char GameSession::get_previous_char()
 	{
 		return map.get_previous_char()[0];
 	}
+
 	int GameSession::get_no_of_potions()
 	{
 		return player_character->get_potion();
 	}
-	double GameSession::get_weak_monster_health_percentage()
-	{
-		return (weak_monster.get_current_health() * 100)/weak_monster.get_max_health();
-	}
-	double GameSession::get_medium_monster_health_percentage()
-	{
-		return (medium_monster.get_current_health() * 100)/medium_monster.get_max_health();
-	}
-	double GameSession::get_strong_monster_health_percentage()
-	{
-		return (strong_monster.get_current_health() * 100)/strong_monster.get_max_health();
-	}
-	double GameSession::get_dragon_monster_health_percentage()
-	{
-		return (dragon_monster.get_current_health() * 100)/dragon_monster.get_max_health();
-	}
+
 	void GameSession::reset_all_monsters()
 	{
 		weak_monster.reset_monster();
 		medium_monster.reset_monster();
 		strong_monster.reset_monster();
 	}
+
 	double GameSession::get_weapon_drop_attributes(int monster_type)
 	{
 		if (monster_type == 1) return weak_monster.get_weapon_drop();
@@ -209,14 +205,43 @@ namespace Domain::Game
 		else if (monster_type == 3) return strong_monster.get_weapon_drop();
 		else return 0.0;
 	}
+
 	bool GameSession::is_player_alive()
 	{
 		if (player_character->get_current_health() > 0.0) return true;
 		return false;
 	}
+	
 	bool GameSession::is_dragon_alive()
 	{
 		if (dragon_monster.get_current_health() > 0.0) return true;
 		return false;
+	}
+
+	std::string GameSession::get_monster_name(int monster_type)
+	{
+		if (monster_type == 1) return weak_monster.get_monster_name();
+		else if (monster_type == 2) return medium_monster.get_monster_name();
+		else if (monster_type == 3) return strong_monster.get_monster_name();
+		else if (monster_type == 4) return dragon_monster.get_monster_name();
+		else return "NA";
+	}
+
+	double GameSession::get_monster_health_percentage(int monster_type)
+	{
+		if (monster_type == 1) return (weak_monster.get_current_health() * 100.0) / weak_monster.get_max_health();
+		else if (monster_type == 2) return (medium_monster.get_current_health() * 100.0) / medium_monster.get_max_health();
+		else if (monster_type == 3) return (strong_monster.get_current_health() * 100.0) / strong_monster.get_max_health();
+		else if (monster_type == 4) return (dragon_monster.get_current_health() * 100.0) / dragon_monster.get_max_health();
+		else return 0.0;
+	}
+
+	std::string GameSession::get_character_name()
+	{
+		return player_character->get_name();
+	}
+	double GameSession::get_player_attributes()
+	{
+		return player_character->get_total_attributes();
 	}
 }

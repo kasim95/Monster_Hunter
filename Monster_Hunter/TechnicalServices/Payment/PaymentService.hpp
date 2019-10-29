@@ -24,4 +24,3 @@ namespace TechnicalServices::Payment
 		bool getFileContent(std::string fileName, std::vector<std::string> & vecOfStrs);
 	};
 }
-

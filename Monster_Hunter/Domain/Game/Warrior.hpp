@@ -6,6 +6,7 @@ namespace Domain::Game
 	class Warrior : public Domain::Game::Character
 	{
 	public:
+		Warrior();
 		void calculate_damage() override;
 		~Warrior() noexcept override;
 		void set_image() override;
@@ -14,6 +15,19 @@ namespace Domain::Game
 	//Inline implementation
 	inline Warrior::~Warrior() noexcept
 	{}
+
+	inline Warrior::Warrior()
+	{
+		name = "WARRIOR";
+		weapon_name = "Claymore";
+		attributes = 10;
+		max_health = 150;
+		current_health = max_health;
+		potion = 3;
+		base_damage = 5;
+		damage = base_damage;
+		weapon_attributes = 3;
+	}
 
 	inline void Warrior::calculate_damage()
 	{
