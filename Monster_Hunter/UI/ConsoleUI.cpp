@@ -14,7 +14,6 @@
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
 #include "../TechnicalServices/Payment/PaymentService.hpp"
-#include "../Domain/Shop/Shop.hpp"
 #include "PlayGame.hpp";
 #include "../Domain/Game/Character.hpp"
 #include "../Domain/Game/Assassin.hpp"
@@ -45,8 +44,6 @@ namespace UI
 		std::string selectedRole;
 		std::string username;
 		TechnicalServices::Payment::PaymentService _purchase_history;
-		Domain::Shop::Shop _item;
-
 		
 		do 
 		{
@@ -87,7 +84,6 @@ namespace UI
 		//enter menu code for play game, shop, help etc
 		std::unique_ptr<Domain::Menu::SessionHandler> sessionControl = Domain::Menu::SessionHandler::createSession(selectedRole);
 		std::vector<std::string> commands = sessionControl->getCommands();
-		//unsigned menuSelection;
 		char menuSelection;
 		do
 		{
@@ -105,7 +101,7 @@ namespace UI
 		std::vector<double> Scores;
 		if (selectedCommand == "Start Game")
 		{
-			_logger << "Game started";
+			_logger << "Player Selection Screen";
 			//
 			char _character;
 			int chartoint = 100;
@@ -122,32 +118,24 @@ namespace UI
 						{
 							break;
 						}
-						
-						for (int i = 0; i < 1; ++i)
-							std::cout << "Items available for purchase\n" << i + 1 << " : " << _item.display_item()[i].name << std::endl;
-
-							int choice;
-							std::cout << "Select the item number you want to purchase \n";
-							std::cin >> choice;
-							if (choice <= _item.display_item().size() && _purchase_history.purchaseItem(_item.display_item()[choice].id))
-							{
-								std::cout << "Successfully purchased the item\n";
-							}
-								std::cout << "Purchase process didn't go through\n";
+						for (int i = 0; i < _purchase_history.displayItemsforpurchase().size(); ++i)
+						{
+							std::cout << "Item available for purchase\n" << i << " : " << _purchase_history.displayItemsforpurchase()[i].item_name << " | Price: $9.99" << std::endl;
+						}
+						int choice;
+						std::cout << "Select the item number you want to purchase: ";
+						std::cin >> choice;
+						if (choice < _purchase_history.displayItemsforpurchase().size() && _purchase_history.purchaseItem(username, _purchase_history.displayItemsforpurchase()[choice].item_id)) std::cout << "Successfully purchased the item\n";
+						else std::cout << "Purchase process didn't go through\n";
 						//done	
-						//enter code to check if Mage is purchased
-						//if yes break;
-						//else display purchase options and purchase it
 					}
-
 				}
 				catch (...)
 				{
 					chartoint = 100;
 				}
-			//} while (!(chartoint == 1 || chartoint == 2 || chartoint == 3));
 			} while (!(chartoint == 1 || chartoint == 2));
-
+			_logger << "Game Started";
 			UI::PlayGame * playgame;
 			if (chartoint == 3) playgame = new UI::PlayGame(new Domain::Game::Mage());
 			else if (chartoint == 2) playgame = new UI::PlayGame(new Domain::Game::Warrior());
@@ -158,6 +146,7 @@ namespace UI
 			Scores.push_back(score);
 			if (score > 0.0) std::cout << "\nYOU WIN\nScore is " << score << std::endl << std::endl;
 			else std::cout << "\nGAME OVER\nYOU LOSE\nScore is 0" << std::endl << std::endl;
+			_logger << "Closing Game";
 		}
 		else if (selectedCommand == "Quit Game")
 		{
@@ -176,11 +165,6 @@ namespace UI
 		{
 			_logger << "Displaying Help";
 			//enter code to show help
-		}
-		else if (selectedCommand == "Shop")
-		{
-			_logger << "Shop opened";
-			//discard shop
 		}
 		else;
 	}

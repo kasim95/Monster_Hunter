@@ -10,7 +10,6 @@
 #include "Domain/Game/Warrior.hpp"
 #include "Domain/Game/Mage.hpp"
 #include "Domain/Game/GameSession.hpp"
-#include "Domain/Shop/Shop.hpp"
 #include "TechnicalServices/Payment/PaymentService.hpp"
 #include "UI/PlayGame.hpp"
 #include "UI/ConsoleUI.hpp"
@@ -153,19 +152,12 @@ void test_game_equip_weapon()
 
 }
 
-void test_shop()
-{
-	Domain::Shop::Shop _shop;
-	std::cout << _shop.purchase("100A");
-	std::cout << _shop.purchase("100A");
-}
-
 void test_payment_handler()
 {
 	std::cout << "Payment Handler test\n";
 	TechnicalServices::Payment::PaymentService payservice;
 	std::cout << payservice.findPurchaseByName("Kasim") << std::endl;
-	std::cout << payservice.purchaseItem("100A") << std::endl;
+	std::cout << payservice.purchaseItem("Kasim","100A") << std::endl;
 }
 
 
@@ -195,7 +187,6 @@ int main()
 //	test_gamesession_move_character();
 //	test_gamesession_select_character();
 //	test_game_equip_weapon();
-//	test_shop();
 //	test_payment_handler();
 //	test_play_game();
 	test_console_ui();

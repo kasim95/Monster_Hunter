@@ -173,7 +173,6 @@
     <ClInclude Include="Domain\Game\Monster.hpp" />
     <ClInclude Include="Domain\Game\Orc.hpp" />
     <ClInclude Include="TechnicalServices\Persistence\PersistenceHandler.hpp" />
-    <ClInclude Include="Domain\Shop\Shop.hpp" />
     <ClInclude Include="TechnicalServices\Persistence\SimpleDB.hpp" />
     <ClInclude Include="TechnicalServices\Logging\SimpleLogger.hpp" />
     <ClInclude Include="Domain\AccountManagement\UserAccounts.hpp" />
@@ -190,7 +189,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Domain\Game\Map.cpp" />
     <ClCompile Include="Domain\Game\Monster.cpp" />
-    <ClCompile Include="Domain\Shop\Shop.cpp" />
     <ClCompile Include="TechnicalServices\Persistence\SimpleDB.cpp" />
     <ClCompile Include="Domain\AccountManagement\UserAccounts.cpp" />
   </ItemGroup>

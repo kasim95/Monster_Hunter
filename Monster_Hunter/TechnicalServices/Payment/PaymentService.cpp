@@ -8,9 +8,12 @@ namespace TechnicalServices::Payment
 {
 	PaymentService::PaymentService()
 	{
+		_items = {
+			{"100A", "Character_Mage"}
+		};
+
 		purchase_history = {
-			{"Kasim", "100A"},
-			{}
+			{"Kasim", "100A"}
 		};
 		//enter code to check if PURCHASE_HISTORY.txt file exists,
 		//if not initialize with admin having all purchases and write the vector of structs to a text file named PURCHASE_HISTORY.txt
@@ -20,19 +23,12 @@ namespace TechnicalServices::Payment
 
 	}
 
-	bool PaymentService::purchaseItem(std::string _itemid)
+	bool PaymentService::purchaseItem(std::string _username, std::string _itemid)
 	{
 		try
 		{
-			std::string _username = "_";
 			char creditcardno[11];
 			char cvv[4];
-			while (!(_username == "Kasim" || _username == "Mark" || _username == "Shawn"))
-			{
-				std::cout << "\n\nEnter your correct username: \n";
-				std::getline(std::cin, _username);
-			}
-			bool alreadypurchased = false;
 			for (unsigned i = 0; i < purchase_history.size(); ++i)
 			{
 				if (purchase_history[i].username == _username)
@@ -40,10 +36,13 @@ namespace TechnicalServices::Payment
 					return true;
 				}
 			}
-			std::cout << "\nEnter your credit card no: \n";
+			std::cout << "\n*************************\n";
+			std::cout << "CSUF Payment Service\n";
+			std::cout << "\nEnter your credit card no: ";
+			std::cin.ignore();
 			std::cin.getline(creditcardno, 11);
 			std::string _creditcardno(creditcardno);
-			std::cout << "\nEnter CVV code: \n";
+			std::cout << "\nEnter CVV code: ";
 			std::cin.getline(cvv, 4);
 			std::string _cvv(cvv);
 			if (verifypaymentdetails(_username, _creditcardno, _cvv))
@@ -54,8 +53,12 @@ namespace TechnicalServices::Payment
 				//std::copy(purchase_history.begin(), purchase_history.end(), output_iterator);
 				//enter code to save the purchase history to text file
 				//done. save purchased items in the text file
+				std::cout << "\nPayment Confirmed. Enjoy your purchase\n";
+				std::cout << "*************************\n";
 				return true;
 			}
+			std::cout << "\nPayment Failed\n";
+			std::cout << "*************************\n";
 			return false;
 		}
 		catch (...)
@@ -124,5 +127,9 @@ namespace TechnicalServices::Payment
 		//Close The File
 		in.close();
 		return true;
+	}
+	std::vector<item> PaymentService::displayItemsforpurchase()
+	{
+		return _items;
 	}
 }

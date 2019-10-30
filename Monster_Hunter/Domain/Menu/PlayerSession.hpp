@@ -21,6 +21,6 @@ namespace Domain::Menu
 
 	inline std::vector<std::string> PlayerSession::getCommands()
 	{
-		return { "Start Game","Scores", "Shop", "Help", "Quit Game" };
+		return { "Start Game","Scores","Help","Quit Game" };
 	}
 }
