@@ -28,7 +28,7 @@ namespace TechnicalServices::Persistence
 			//Username, Password, Roles
 			{"Kasim", "passpass", {"Player", "Admin"}},
 			{"Mark", "passpass", {"Player"}},
-			{"Shawn", "passpass", {"Player"}}
+			{"Sean", "passpass", {"Player"}}
 		};
 		
 		for (const auto & user : storedUsers)

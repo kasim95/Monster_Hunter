@@ -71,6 +71,7 @@ namespace TechnicalServices::Payment
 	{
 		//enter code to update purchase_history vector from text file
 		//done
+		/*
 		std::vector<std::string> tem_purchase_history;
 		bool result = getFileContent("PURCHASE_HISTORY.txt", tem_purchase_history);
 		if (result)
@@ -83,7 +84,7 @@ namespace TechnicalServices::Payment
 				//group every two elements which username and itemid into purchase_history to update 
 			}
 		}
-
+		*/
 		for (unsigned i = 0; i < purchase_history.size(); ++i)
 		{
 			if (purchase_history[i].username == _username)
