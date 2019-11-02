@@ -8,49 +8,14 @@
 //#include <curses.h>
 namespace UI
 {
+	
 	PlayGame::PlayGame(Domain::Game::Character * _char)
 	{
-		/*
-		char _character;
-		int chartoint = 100;
-		do
-		{
-			try
-			{
-				std::cout << "Enter Character (1-3) for Characters (1 for Assassin, 2 for Warrior, 3 for Mage): ";
-				std::cin >> _character;
-				chartoint = _character - 48;	//convert char to int
-			}
-			catch (...)
-			{
-				chartoint = 100;
-			}	
-		} while (!(chartoint == 1 || chartoint == 2 || chartoint == 3));
-		
-		if (character_no == 1)
-		{
-			Domain::Game::Assassin * z = new Domain::Game::Assassin();
-			Domain::Game::GameSession _gamesess(z);
-			gamesess = _gamesess;
-		}
-		else if (character_no == 2)
-		{
-			Domain::Game::Warrior * z = new Domain::Game::Warrior;
-			Domain::Game::GameSession _gamesess(z);
-			gamesess = _gamesess;
-		}
-		else
-		{
-			Domain::Game::Mage * z = new Domain::Game::Mage;
-			Domain::Game::GameSession _gamesess(z);
-			gamesess = _gamesess;
-		}
-		*/
 		Domain::Game::GameSession _gamesess(_char);
 		gamesess = _gamesess;
-	
 	}
-	
+
+
 	double PlayGame::launch()
 	{
 		bool playeralive = true;
@@ -175,6 +140,7 @@ namespace UI
 		}
 		std::cout << "\nCONTROLS: G - Attack\n";
 	}
+
 
 	void PlayGame::weapon_drop(int monster_type)
 	{

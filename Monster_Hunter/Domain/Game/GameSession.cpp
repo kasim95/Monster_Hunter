@@ -2,26 +2,8 @@
 
 namespace Domain::Game
 {
-	/*
-	GameSession::GameSession()
-	{
-		//Character* player_character = new Assassin();
-		// the reason the test for equip weapon WAS failing because Assassin z is lost once the constructor is called and this causes memory leak which returns a nullptr
-		Character* z = new Assassin();
-		player_character = z;
-		player_character->calculate_damage();
-		time1 = clock();
-		time2 = time1;
-		weak_monster.reset_monster();
-		medium_monster.reset_monster();
-		strong_monster.reset_monster();
-		dragon_monster.reset_monster();
-	}
-	*/
-
 	GameSession::GameSession(Character * selected_character)
 	{
-		//Character* player_character;
 		player_character = selected_character;
 		player_character->calculate_damage();
 		time1 = clock();
@@ -31,6 +13,9 @@ namespace Domain::Game
 		strong_monster.reset_monster();
 		dragon_monster.reset_monster();
 	}
+
+	GameSession::~GameSession() noexcept
+	{}
 
 	bool GameSession::usePotion()
 	{
@@ -50,14 +35,6 @@ namespace Domain::Game
 		
 		double max_health = player_character->get_max_health();
 		double curr_health = player_character->get_current_health();
-		/*
-		while (curr_health < max_health)
-		{
-			curr_health += max_health * 0.1;
-			if (curr_health > max_health) { curr_health = max_health; }
-			player_character->set_current_health(curr_health);
-		}
-		*/
 		curr_health += max_health * (percentage/100);
 		if (curr_health > max_health) { curr_health = max_health; }
 		player_character->set_current_health(curr_health);

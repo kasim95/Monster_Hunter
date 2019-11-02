@@ -160,6 +160,7 @@
     <ClInclude Include="Domain\Game\Character.hpp" />
     <ClInclude Include="Domain\Menu\SessionHandler.hpp" />
     <ClInclude Include="Domain\Menu\PlayerSession.hpp" />
+    <ClInclude Include="Domain\Game\GameSessionHandler.hpp" />
     <ClInclude Include="UI\PlayGame.hpp" />
     <ClInclude Include="TechnicalServices\Payment\PaymentService.hpp" />
     <ClInclude Include="UI\ConsoleUI.hpp" />

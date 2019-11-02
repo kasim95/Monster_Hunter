@@ -14,7 +14,7 @@
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
 #include "../TechnicalServices/Payment/PaymentService.hpp"
-#include "PlayGame.hpp";
+#include "PlayGame.hpp"
 #include "../Domain/Game/Character.hpp"
 #include "../Domain/Game/Assassin.hpp"
 #include "../Domain/Game/Warrior.hpp"
@@ -48,7 +48,24 @@ namespace UI
 		do 
 		{
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			char accfn;
+			do
+			{
+				std::cout << "\n0 - Login";
+				std::cout << "\n1 - Create Account";
+				std::cout << "\nPick one: ";
+				std::cin >> accfn;
+				accfn -= 48;
+			} 
+			while (!(accfn == 0 || accfn == 1));			
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+			
+			if (accfn == 1)
+			{
+				std::cout << "\nCreate Account\n";
+			}
 
+			std::cout << "\nLogin Screen\n";
 			std::string userName;
 			std::cout << "Enter your username: ";
 			std::getline(std::cin, userName);
@@ -118,11 +135,11 @@ namespace UI
 						{
 							break;
 						}
-						for (int i = 0; i < _purchase_history.displayItemsforpurchase().size(); ++i)
+						for (unsigned i = 0; i < _purchase_history.displayItemsforpurchase().size(); ++i)
 						{
 							std::cout << "Item available for purchase\n" << i << " : " << _purchase_history.displayItemsforpurchase()[i].item_name << " | Price: $9.99" << std::endl;
 						}
-						int choice;
+						unsigned choice;
 						std::cout << "Select the item number you want to purchase: ";
 						std::cin >> choice;
 						if (choice < _purchase_history.displayItemsforpurchase().size() && _purchase_history.purchaseItem(username, _purchase_history.displayItemsforpurchase()[choice].item_id)) std::cout << "Successfully purchased the item\n";

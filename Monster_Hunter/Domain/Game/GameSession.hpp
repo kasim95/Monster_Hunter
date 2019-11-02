@@ -2,6 +2,7 @@
 #include <array>
 #include <ctime>
 #include <memory>
+#include "GameSessionHandler.hpp"
 #include "Character.hpp"
 #include "Assassin.hpp"
 #include "Warrior.hpp"
@@ -15,7 +16,7 @@
 
 namespace Domain::Game
 {
-	class GameSession
+	class GameSession : public Domain::Game::GameSessionHandler
 	{
 	private:
 		std::array<int, 2> player_position;
@@ -30,7 +31,7 @@ namespace Domain::Game
 	public:
 		GameSession() = default;
 		GameSession(Character* selected_character);
-		~GameSession() = default;
+		~GameSession() noexcept override;
 		bool usePotion();
 		void heal_using_campfire(double percentage);
 		void move_character(int direction); //1 for left, 2 for bottom, 3 for right, 4 for top
