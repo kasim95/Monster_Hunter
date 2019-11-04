@@ -29,7 +29,7 @@ namespace Domain::Game
 		weapon_attributes = 5;
 	}
 
-	inline void Assassin::calculate_damage()
+	inline void Assassin::calculate_damage()						//Assassin has these attributes stored so we used Information Expert to efficiently caclulate the damage.
 	{
 		damage = base_damage + ((attributes + weapon_attributes) * 3);
 	}

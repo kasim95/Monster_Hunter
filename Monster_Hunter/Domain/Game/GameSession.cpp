@@ -5,8 +5,8 @@ namespace Domain::Game
 	GameSession::GameSession(Character * selected_character)
 	{
 		player_character = selected_character;
-		player_character->calculate_damage();
-		time1 = clock();
+		player_character->calculate_damage();				//Information Expert GRASP pattern is used here. 
+		time1 = clock();									// calculate_damage is located in the Character class since that is where all the information is stored.
 		time2 = time1;
 		weak_monster.reset_monster();
 		medium_monster.reset_monster();

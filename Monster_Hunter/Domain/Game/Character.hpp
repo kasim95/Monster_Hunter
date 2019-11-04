@@ -27,7 +27,7 @@ namespace Domain::Game
 		//~Character() = default;					//Virtual Destructor
 		virtual ~Character() noexcept = 0;
 		void equip_Weapon(double value, double value_health);
-		virtual void calculate_damage() = 0;
+		virtual void calculate_damage() = 0;					//Virtual function that is defined in the individual character classes. Uses the Information Expert GRASP pattern.
 		double get_attributes();
 		void set_attributes(const double value);
 		double get_max_health();
