@@ -72,9 +72,6 @@
     <ClInclude Include="Domain\Game\Character.hpp">
       <Filter>Character</Filter>
     </ClInclude>
-    <ClInclude Include="Domain\Game\Battle.hpp">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="Domain\Game\Map.hpp">
       <Filter>Game</Filter>
     </ClInclude>
