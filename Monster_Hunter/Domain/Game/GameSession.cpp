@@ -8,7 +8,7 @@ namespace Domain::Game
 		player_character->calculate_damage();				//Information Expert GRASP pattern is used here. 
 		time1 = clock();									// calculate_damage is located in the Character class since that is where all the information is stored.
 		time2 = time1;
-		weak_monster.reset_monster();
+		weak_monster.reset_monster();						//creator GRASP is also used here. GameSession creates the instance than PlayGame class creates them.
 		medium_monster.reset_monster();
 		strong_monster.reset_monster();
 		dragon_monster.reset_monster();
