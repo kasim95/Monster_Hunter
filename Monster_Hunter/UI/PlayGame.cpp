@@ -60,7 +60,7 @@ namespace UI
 			gamesess.end_game();
 			return gamesess.calculate_score();
 		}
-		else;
+		else return 0;
 	}
 
 	void PlayGame::disp_map()

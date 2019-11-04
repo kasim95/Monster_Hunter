@@ -43,8 +43,7 @@ namespace UI
 		std::vector<std::string> roleLegalValues = _persistentData->findRoles();
 		std::string selectedRole;
 		std::string username;
-		//TechnicalServices::Payment::PaymentService _purchase_history;
-		
+
 		do 
 		{
 			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
@@ -119,7 +118,8 @@ namespace UI
 		if (selectedCommand == "Start Game")
 		{
 			_logger << "Player Selection Screen";
-			//
+			
+			//Implemented character selection in ConsoleUI Controller to control the overall flow of the game 
 			char _character;
 			int chartoint = 100;
 			do
@@ -144,7 +144,6 @@ namespace UI
 						std::cin >> choice;
 						if (choice < _purchase_history->displayItemsforpurchase().size() && _purchase_history->purchaseItem(username, _purchase_history->displayItemsforpurchase()[choice].item_id)) std::cout << "Successfully purchased the item\n";
 						else std::cout << "Purchase process didn't go through\n";
-						//done	
 					}
 				}
 				catch (...)
@@ -153,11 +152,13 @@ namespace UI
 				}
 			} while (!(chartoint == 1 || chartoint == 2));
 			_logger << "Game Started";
+			//
+
 			UI::PlayGame * playgame;
 			if (chartoint == 3) playgame = new UI::PlayGame(new Domain::Game::Mage());
 			else if (chartoint == 2) playgame = new UI::PlayGame(new Domain::Game::Warrior());
 			else playgame = new UI::PlayGame(new Domain::Game::Assassin());
-			//UI::PlayGame * playgame = new UI::PlayGame;
+			
 			playgame->disp_map();
 			double score = playgame->launch();
 			Scores.push_back(score);
@@ -173,7 +174,6 @@ namespace UI
 		else if (selectedCommand == "Scores")
 		{
 			_logger << "Displaying Scores";
-			//enter code to show scores
 			std::cout << "Your scores history are: \n";
 			for (int i = Scores.size() - 1; i >= 0; --i)
 				std::cout << Scores[i] << "\n";
@@ -182,6 +182,7 @@ namespace UI
 		{
 			_logger << "Displaying Help";
 			//enter code to show help
+			//incomplete
 		}
 		else;
 	}
