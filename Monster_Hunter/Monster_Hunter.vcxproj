@@ -154,6 +154,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Domain\Game\CharacterCreator.hpp" />
     <ClInclude Include="Domain\Menu\AdminSession.hpp" />
     <ClInclude Include="Domain\AccountManagement\AccountManagementHandler.hpp" />
     <ClInclude Include="Domain\Game\Assassin.hpp" />

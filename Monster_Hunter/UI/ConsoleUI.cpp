@@ -20,6 +20,7 @@
 #include "../Domain/Game/Warrior.hpp"
 #include "../Domain/Game/Mage.hpp"
 #include "../Domain/Game/GameSession.hpp"
+#include "../Domain/Game/CharacterCreator.hpp"
 
 namespace UI
 {
@@ -153,12 +154,25 @@ namespace UI
 			} while (!(chartoint == 1 || chartoint == 2));
 			_logger << "Game Started";
 			//
-
+			/*
 			UI::PlayGame * playgame;
 			if (chartoint == 3) playgame = new UI::PlayGame(new Domain::Game::Mage());
 			else if (chartoint == 2) playgame = new UI::PlayGame(new Domain::Game::Warrior());
 			else playgame = new UI::PlayGame(new Domain::Game::Assassin());
-			
+			*/
+			//
+			// Character Factory Pattern
+			std::string characterType;
+			if (chartoint == 3) characterType = "Mage";
+			else if (chartoint == 2) characterType = "Warrior";
+			else if (chartoint == 1) characterType = "Assassin";
+			else characterType = "Not Selected";
+			Domain::Game::CharacterCreator * theCreator = Domain::Game::CharacterCreator::createCreator(characterType);
+			Domain::Game::Character * theCharacter = theCreator->createCharacter();
+			UI::PlayGame * playgame = new UI::PlayGame(theCharacter);
+			//
+
+
 			playgame->disp_map();
 			double score = playgame->launch();
 			Scores.push_back(score);

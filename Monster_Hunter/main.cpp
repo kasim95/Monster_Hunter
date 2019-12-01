@@ -13,6 +13,7 @@
 #include "TechnicalServices/Payment/PaymentService.hpp"
 #include "UI/PlayGame.hpp"
 #include "UI/ConsoleUI.hpp"
+#include "Domain/Game/CharacterCreator.hpp"
 
 void test_map()
 {
@@ -177,6 +178,13 @@ void test_console_ui()
 	consoleui.launch();
 }
 
+void test_factory_pattern()
+{
+	Domain::Game::CharacterCreator * theCreator = Domain::Game::CharacterCreator::createCreator("Warrior");
+	Domain::Game::Character * newCharacter = theCreator->createCharacter();
+	std::cout << "Character's name is " << newCharacter->get_name() << std::endl;
+}
+
 int main()
 {
 //    std::cout << "Hello World!\n"; 
@@ -190,6 +198,7 @@ int main()
 //	test_payment_handler();
 //	test_play_game();
 	test_console_ui();
+//	test_factory_pattern();
 	return 0;
 }
 
