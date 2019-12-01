@@ -131,7 +131,7 @@ void test_gamesession_move_character()
 void test_gamesession_select_character()
 {
 	Domain::Game::Warrior warrior;
-	Domain::Game::GameSession gamesess(&warrior);
+	Domain::Game::GameSession gamesess("Warrior");
 }
 
 void test_game_equip_weapon()
@@ -144,8 +144,8 @@ void test_game_equip_weapon()
 	std::cout << "\nequipped weapon damage is " << gamesess.get_player_damage();
 	
 	std::cout << "\n\nSelect character constructor";
-	Domain::Game::Mage warr;
-	Domain::Game::GameSession gamesess1(&warr);
+	//Domain::Game::Mage warr;
+	Domain::Game::GameSession gamesess1("Warrior");
 	std::cout << "\nearlier damage is " << gamesess1.get_player_damage();
 	gamesess1.equip_weapon(100);
 	std::cout << "\nequipped weapon damage is " << gamesess1.get_player_damage();
@@ -165,8 +165,8 @@ void test_payment_handler()
 void test_play_game()
 {
 
-	Domain::Game::Character * _char = new Domain::Game::Assassin();
-	UI::PlayGame playgame(_char);
+	//Domain::Game::Character * _char = new Domain::Game::Assassin();
+	UI::PlayGame playgame(1);
 	playgame.disp_map();
 	std::cout << playgame.launch();
 }

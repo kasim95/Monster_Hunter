@@ -162,14 +162,7 @@ namespace UI
 			*/
 			//
 			// Character Factory Pattern
-			std::string characterType;
-			if (chartoint == 3) characterType = "Mage";
-			else if (chartoint == 2) characterType = "Warrior";
-			else if (chartoint == 1) characterType = "Assassin";
-			else characterType = "Not Selected";
-			Domain::Game::CharacterCreator * theCreator = Domain::Game::CharacterCreator::createCreator(characterType);
-			Domain::Game::Character * theCharacter = theCreator->createCharacter();
-			UI::PlayGame * playgame = new UI::PlayGame(theCharacter);
+			UI::PlayGame * playgame = new UI::PlayGame(chartoint);
 			//
 
 

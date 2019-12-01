@@ -2,6 +2,7 @@
 #include <array>
 #include <ctime>
 #include <memory>
+#include <string>
 #include "GameSessionHandler.hpp"
 #include "Character.hpp"
 #include "Assassin.hpp"
@@ -13,6 +14,7 @@
 #include "Golem.hpp"
 #include "Dragon.hpp"
 #include "Map.hpp"
+#include "CharacterCreator.hpp"
 
 namespace Domain::Game
 {
@@ -30,7 +32,7 @@ namespace Domain::Game
 		clock_t time2;
 	public:
 		GameSession() = default;
-		GameSession(Character* selected_character);
+		GameSession(std::string characterName);
 		~GameSession() noexcept override;
 		bool usePotion();
 		void heal_using_campfire(double percentage);

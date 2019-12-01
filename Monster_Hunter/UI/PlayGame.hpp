@@ -15,7 +15,7 @@ namespace UI
 	{
 	public:
 		PlayGame() = default;
-		PlayGame(Domain::Game::Character * _char);
+		PlayGame(int characterType);
 		~PlayGame() = default;
 		double launch();				//returns score
 		void disp_map();
@@ -24,6 +24,6 @@ namespace UI
 		void weapon_drop(int monster_type);
 
 	private:
-		Domain::Game::GameSession gamesess;
+		Domain::Game::GameSession * gamesess;
 	};
 }

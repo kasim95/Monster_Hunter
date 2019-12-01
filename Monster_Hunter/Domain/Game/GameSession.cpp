@@ -1,10 +1,13 @@
 #include "GameSession.hpp"
+#include "CharacterCreator.hpp"
 
 namespace Domain::Game
 {
-	GameSession::GameSession(Character * selected_character)
+	GameSession::GameSession(std::string characterName)
 	{
-		player_character = selected_character;
+		Domain::Game::CharacterCreator * theCreator = Domain::Game::CharacterCreator::createCreator(characterName);
+		player_character = theCreator->createCharacter();
+
 		player_character->calculate_damage();				//Information Expert GRASP pattern is used here. 
 		time1 = clock();									// calculate_damage is located in the Character class since that is where all the information is stored.
 		time2 = time1;
@@ -146,7 +149,7 @@ namespace Domain::Game
 
 	bool GameSession::equip_weapon(double weapon_attributes)
 	{
-//		player_character->set_weapon_attributes(weapon_attributes);
+		//player_character->set_weapon_attributes(weapon_attributes);
 		player_character->equip_Weapon(weapon_attributes, 0);
 		player_character->calculate_damage();
 		return true;
