@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.28307.852
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Monster_Hunter", "Monster_Hunter\Monster_Hunter.vcxproj", "{06FA7220-AF45-4967-9C43-34CB4179D6CF}"
 EndProject
-Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Monster_Hunter_Build", "Monster_Hunter_Build\Monster_Hunter_Build.vdproj", "{726A4FCB-3004-4817-B19E-FABA8B452345}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -24,11 +22,6 @@ Global
 		{06FA7220-AF45-4967-9C43-34CB4179D6CF}.Release|x64.Deploy.0 = Release|x64
 		{06FA7220-AF45-4967-9C43-34CB4179D6CF}.Release|x86.ActiveCfg = Release|Win32
 		{06FA7220-AF45-4967-9C43-34CB4179D6CF}.Release|x86.Build.0 = Release|Win32
-		{726A4FCB-3004-4817-B19E-FABA8B452345}.Debug|x64.ActiveCfg = Debug
-		{726A4FCB-3004-4817-B19E-FABA8B452345}.Debug|x86.ActiveCfg = Debug
-		{726A4FCB-3004-4817-B19E-FABA8B452345}.Release|x64.ActiveCfg = Release
-		{726A4FCB-3004-4817-B19E-FABA8B452345}.Release|x64.Build.0 = Release
-		{726A4FCB-3004-4817-B19E-FABA8B452345}.Release|x86.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,6 +14,7 @@
 #include "UI/PlayGame.hpp"
 #include "UI/ConsoleUI.hpp"
 #include "Domain/Game/CharacterCreator.hpp"
+#include "UI/PaymentUI.hpp"
 
 void test_map()
 {
@@ -152,7 +153,7 @@ void test_game_equip_weapon()
 
 
 }
-
+/*
 void test_payment_handler()
 {
 	std::cout << "Payment Handler test\n";
@@ -160,7 +161,7 @@ void test_payment_handler()
 	std::cout << payservice.findPurchaseByName("Kasim") << std::endl;
 	std::cout << payservice.purchaseItem("Kasim","100A") << std::endl;
 }
-
+*/
 
 void test_play_game()
 {
@@ -185,6 +186,13 @@ void test_factory_pattern()
 	std::cout << "Character's name is " << newCharacter->get_name() << std::endl;
 }
 
+void test_new_payment_system()
+{
+	UI::PaymentUI payui;
+	payui.purchaseItem("Sean", "100A");
+}
+
+
 int main()
 {
 //    std::cout << "Hello World!\n"; 
@@ -199,6 +207,7 @@ int main()
 //	test_play_game();
 	test_console_ui();
 //	test_factory_pattern();
+//	test_new_payment_system();
 	return 0;
 }
 

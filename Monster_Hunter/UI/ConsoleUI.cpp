@@ -22,17 +22,16 @@
 #include "../Domain/Game/GameSession.hpp"
 #include "../Domain/Game/CharacterCreator.hpp"
 
+
 namespace UI
 {
 	ConsoleUI::ConsoleUI()
 		: _accounts(std::make_unique<Domain::AccountManagement::UserAccounts>() ),
 		_loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>() ),
-		_persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>() ),
-		_purchase_history(std::make_unique<TechnicalServices::Payment::PaymentService>() )
+		_persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>() )
 	{
 		_logger << "Simple UI being used and has been successfully initialized";
 	}
-	
 
 	ConsoleUI::~ConsoleUI() noexcept
 	{
@@ -98,7 +97,7 @@ namespace UI
 			_logger << "Login failure for \"" + userName + "\" as role \"" + selectedRole + "\"";
 		} while (true);
 
-		//enter menu code for play game, shop, help etc
+		//enter menu code for play game, help etc
 		std::unique_ptr<Domain::Menu::SessionHandler> sessionControl = Domain::Menu::SessionHandler::createSession(selectedRole);
 		std::vector<std::string> commands = sessionControl->getCommands();
 		char menuSelection;
@@ -132,19 +131,11 @@ namespace UI
 					chartoint = _character - 48;	//convert char to int
 					if (chartoint == 3)
 					{
-						if (_purchase_history->findPurchaseByName(username))
+						if (payui.findexistingPurchase(username))
 						{
 							break;
 						}
-						for (unsigned i = 0; i < _purchase_history->displayItemsforpurchase().size(); ++i)
-						{
-							std::cout << "Item available for purchase\n" << i << " : " << _purchase_history->displayItemsforpurchase()[i].item_name << " | Price: $9.99" << std::endl;
-						}
-						unsigned choice;
-						std::cout << "Select the item number you want to purchase: ";
-						std::cin >> choice;
-						if (choice < _purchase_history->displayItemsforpurchase().size() && _purchase_history->purchaseItem(username, _purchase_history->displayItemsforpurchase()[choice].item_id)) std::cout << "Successfully purchased the item\n";
-						else std::cout << "Purchase process didn't go through\n";
+						payui.displayItems(username);
 					}
 				}
 				catch (...)
@@ -182,7 +173,7 @@ namespace UI
 		{
 			_logger << "Displaying Scores";
 			std::cout << "Your scores history are: \n";
-			for (int i = Scores.size() - 1; i >= 0; --i)
+			for (size_t i = Scores.size() - 1; i >= 0; --i)
 				std::cout << Scores[i] << "\n";
 		}
 		else if (selectedCommand == "Help")

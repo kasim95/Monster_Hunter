@@ -235,6 +235,6 @@ namespace Domain::Game
 	}
 	int GameSession::get_character_weapon_attributes()
 	{
-		return player_character->get_weapon_attributes();
+		return (int) player_character->get_weapon_attributes();
 	}
 }

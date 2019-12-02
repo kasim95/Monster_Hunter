@@ -162,6 +162,9 @@
     <ClInclude Include="Domain\Menu\SessionHandler.hpp" />
     <ClInclude Include="Domain\Menu\PlayerSession.hpp" />
     <ClInclude Include="Domain\Game\GameSessionHandler.hpp" />
+    <ClInclude Include="Domain\Shop\ShopHandler.hpp" />
+    <ClInclude Include="Domain\Shop\ShopMenu.hpp" />
+    <ClInclude Include="UI\PaymentUI.hpp" />
     <ClInclude Include="UI\PlayGame.hpp" />
     <ClInclude Include="TechnicalServices\Payment\PaymentService.hpp" />
     <ClInclude Include="UI\ConsoleUI.hpp" />
@@ -184,6 +187,7 @@
   <ItemGroup>
     <ClCompile Include="Domain\Game\Character.cpp" />
     <ClCompile Include="Domain\Menu\SessionHandler.cpp" />
+    <ClCompile Include="Domain\Shop\ShopMenu.cpp" />
     <ClCompile Include="UI\PlayGame.cpp" />
     <ClCompile Include="TechnicalServices\Payment\PaymentService.cpp" />
     <ClCompile Include="UI\ConsoleUI.cpp" />
