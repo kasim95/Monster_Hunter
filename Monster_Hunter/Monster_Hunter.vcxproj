@@ -164,9 +164,11 @@
     <ClInclude Include="Domain\Game\GameSessionHandler.hpp" />
     <ClInclude Include="Domain\Shop\ShopHandler.hpp" />
     <ClInclude Include="Domain\Shop\ShopMenu.hpp" />
+    <ClInclude Include="Domain\Game\MapHandler.hpp" />
+    <ClInclude Include="TechnicalServices\Payment\MastercardPaymentService.hpp" />
+    <ClInclude Include="TechnicalServices\Payment\PaymentServiceHandler.hpp" />
     <ClInclude Include="UI\PaymentUI.hpp" />
     <ClInclude Include="UI\PlayGame.hpp" />
-    <ClInclude Include="TechnicalServices\Payment\PaymentService.hpp" />
     <ClInclude Include="UI\ConsoleUI.hpp" />
     <ClInclude Include="Domain\Game\Dragon.hpp" />
     <ClInclude Include="Domain\Game\GameSession.hpp" />
@@ -183,13 +185,13 @@
     <ClInclude Include="Domain\AccountManagement\UserAccounts.hpp" />
     <ClInclude Include="UI\UserInterfaceHandler.hpp" />
     <ClInclude Include="Domain\Game\Warrior.hpp" />
+    <ClInclude Include="TechnicalServices\Payment\VisaPaymentService.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Domain\Game\Character.cpp" />
     <ClCompile Include="Domain\Menu\SessionHandler.cpp" />
     <ClCompile Include="Domain\Shop\ShopMenu.cpp" />
     <ClCompile Include="UI\PlayGame.cpp" />
-    <ClCompile Include="TechnicalServices\Payment\PaymentService.cpp" />
     <ClCompile Include="UI\ConsoleUI.cpp" />
     <ClCompile Include="Domain\Game\GameSession.cpp" />
     <ClCompile Include="main.cpp" />

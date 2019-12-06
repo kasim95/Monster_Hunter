@@ -1,6 +1,6 @@
 #pragma once
 #include "ShopHandler.hpp"
-#include "../../TechnicalServices/Payment/PaymentService.hpp"
+#include "../../TechnicalServices/Payment/PaymentServiceHandler.hpp"
 
 namespace Domain::Shop
 {

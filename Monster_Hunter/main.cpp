@@ -5,17 +5,19 @@
 #include <iostream>
 #include <array>
 #include <string>
-#include "Domain/Game/Map.hpp"
+// #include "Domain/Game/Map.hpp"
 #include "Domain/Game/Assassin.hpp"
 #include "Domain/Game/Warrior.hpp"
 #include "Domain/Game/Mage.hpp"
 #include "Domain/Game/GameSession.hpp"
-#include "TechnicalServices/Payment/PaymentService.hpp"
+#include "TechnicalServices/Payment/PaymentServiceHandler.hpp"
+#include "TechnicalServices/Payment/VisaPaymentService.hpp"
 #include "UI/PlayGame.hpp"
 #include "UI/ConsoleUI.hpp"
 #include "Domain/Game/CharacterCreator.hpp"
 #include "UI/PaymentUI.hpp"
 
+/*
 void test_map()
 {
 	Domain::Game::Map z;
@@ -29,6 +31,7 @@ void test_map()
 		std::cout << std::endl;
 	}
 }
+*/
 
 void test_assassin()
 {

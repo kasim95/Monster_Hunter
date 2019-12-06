@@ -13,7 +13,7 @@
 #include "Orc.hpp"
 #include "Golem.hpp"
 #include "Dragon.hpp"
-#include "Map.hpp"
+#include "MapHandler.hpp"
 #include "CharacterCreator.hpp"
 
 namespace Domain::Game
@@ -27,7 +27,7 @@ namespace Domain::Game
 		Orc medium_monster;
 		Golem strong_monster;
 		Dragon dragon_monster;
-		Map map;
+		MapHandler * map;
 		clock_t time1;
 		clock_t time2;
 	public:

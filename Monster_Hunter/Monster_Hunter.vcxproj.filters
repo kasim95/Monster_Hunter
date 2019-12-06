@@ -81,9 +81,6 @@
     <ClInclude Include="Domain\AccountManagement\AccountManagementHandler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TechnicalServices\Payment\PaymentService.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Domain\Menu\SessionHandler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -111,6 +108,18 @@
     <ClInclude Include="UI\PaymentUI.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="TechnicalServices\Payment\PaymentServiceHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\Payment\MastercardPaymentService.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TechnicalServices\Payment\VisaPaymentService.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Domain\Game\MapHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -136,9 +145,6 @@
     </ClCompile>
     <ClCompile Include="Domain\Game\GameSession.cpp">
       <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="TechnicalServices\Payment\PaymentService.cpp">
-      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Domain\Menu\SessionHandler.cpp">
       <Filter>Source Files</Filter>

@@ -4,10 +4,9 @@
 #include "../Domain/Game/GameSessionHandler.hpp"
 #include "../Domain/Game/GameSession.hpp"
 #include "../Domain/Game/Character.hpp"
-#include "../TechnicalServices/Payment/PaymentService.hpp"
-#include "../Domain/Game/Assassin.hpp"
-#include "../Domain/Game/Warrior.hpp"
-#include "../Domain/Game/Mage.hpp"
+// #include "../Domain/Game/Assassin.hpp"
+// #include "../Domain/Game/Warrior.hpp"
+// #include "../Domain/Game/Mage.hpp"
 
 namespace UI
 {

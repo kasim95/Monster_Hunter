@@ -1,13 +1,17 @@
 #include "ShopMenu.hpp"
 
+#include "../../TechnicalServices/Payment/VisaPaymentService.hpp"
+// #include "../../TechnicalServices/Payment/MastercardPaymentService.hpp"
+
+
 namespace Domain::Shop
 {
 	inline ShopMenu::~ShopMenu() noexcept
-	{
-	}
+	{}
 
 	ShopMenu::ShopMenu()
 	{
+		payservice = new TechnicalServices::Payment::VisaPaymentService();
 		_items = {
 			{"100A", "Character_Mage"}
 		};

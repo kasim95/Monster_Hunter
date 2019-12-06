@@ -13,7 +13,6 @@
 #include "../TechnicalServices/Logging/LoggerHandler.hpp"
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
-#include "../TechnicalServices/Payment/PaymentService.hpp"
 #include "PlayGame.hpp"
 #include "../Domain/Game/Character.hpp"
 #include "../Domain/Game/Assassin.hpp"

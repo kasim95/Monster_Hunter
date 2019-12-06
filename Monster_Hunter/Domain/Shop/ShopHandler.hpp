@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "../../TechnicalServices/Payment/PaymentService.hpp"
+#include "../../TechnicalServices/Payment/PaymentServiceHandler.hpp"
 
 namespace Domain::Shop
 {
@@ -31,7 +31,7 @@ namespace Domain::Shop
 	protected:
 		std::vector<user_purchases> purchase_history;
 		std::vector<item> _items;
-		TechnicalServices::Payment::PaymentService * payservice;
+		TechnicalServices::Payment::PaymentServiceHandler * payservice;
 		ShopHandler & operator=(const ShopHandler & rhs) = default;
 		ShopHandler & operator=(ShopHandler && rhs) = default;
 	};

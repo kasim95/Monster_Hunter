@@ -1,5 +1,6 @@
 #include "GameSession.hpp"
 #include "CharacterCreator.hpp"
+#include "Map.hpp"
 
 namespace Domain::Game
 {
@@ -15,6 +16,7 @@ namespace Domain::Game
 		medium_monster.reset_monster();
 		strong_monster.reset_monster();
 		dragon_monster.reset_monster();
+		map = new Map();
 	}
 
 	GameSession::~GameSession() noexcept
@@ -45,7 +47,7 @@ namespace Domain::Game
 
 	void GameSession::move_character(int direction)
 	{
-		std::array<int, 2> previous_char_pos = map.get_previous_char_pos();
+		std::array<int, 2> previous_char_pos = map->get_previous_char_pos();
 		std::array<int, 2> new_pos;
 		if (direction == 4)
 		{
@@ -53,7 +55,7 @@ namespace Domain::Game
 			{
 				new_pos[0] = previous_char_pos[0] - 1;
 				new_pos[1] = previous_char_pos[1];
-				map.draw_map(new_pos);
+				map->draw_map(new_pos);
 			}
 		}
 		else if (direction == 2)
@@ -62,7 +64,7 @@ namespace Domain::Game
 			{
 				new_pos[0] = previous_char_pos[0] + 1;
 				new_pos[1] = previous_char_pos[1];
-				map.draw_map(new_pos);
+				map->draw_map(new_pos);
 			}
 
 		}
@@ -72,7 +74,7 @@ namespace Domain::Game
 			{
 				new_pos[0] = previous_char_pos[0];
 				new_pos[1] = previous_char_pos[1] + 1;
-				map.draw_map(new_pos);
+				map->draw_map(new_pos);
 			}
 		}
 		else
@@ -81,7 +83,7 @@ namespace Domain::Game
 			{
 				new_pos[0] = previous_char_pos[0];
 				new_pos[1] = previous_char_pos[1] - 1;
-				map.draw_map(new_pos);
+				map->draw_map(new_pos);
 			}
 		}
 	}
@@ -144,7 +146,7 @@ namespace Domain::Game
 
 	std::array<std::array<std::string, 30>, 15> GameSession::return_map()
 	{
-		return map.get_map();
+		return map->get_map();
 	}
 
 	bool GameSession::equip_weapon(double weapon_attributes)
@@ -167,7 +169,7 @@ namespace Domain::Game
 
 	char GameSession::get_previous_char()
 	{
-		return map.get_previous_char()[0];
+		return map->get_previous_char()[0];
 	}
 
 	int GameSession::get_no_of_potions()
