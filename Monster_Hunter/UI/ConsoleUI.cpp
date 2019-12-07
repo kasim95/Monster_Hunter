@@ -20,14 +20,16 @@
 #include "../Domain/Game/Mage.hpp"
 #include "../Domain/Game/GameSession.hpp"
 #include "../Domain/Game/CharacterCreator.hpp"
-
+#include "PaymentUI.hpp"
 
 namespace UI
 {
 	ConsoleUI::ConsoleUI()
 		: _accounts(std::make_unique<Domain::AccountManagement::UserAccounts>() ),
 		_loggerPtr(std::make_unique<TechnicalServices::Logging::SimpleLogger>() ),
-		_persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>() )
+		_persistentData(std::make_unique<TechnicalServices::Persistence::SimpleDB>() ),
+		payui(std::make_unique<UI::PaymentUI>() )
+		
 	{
 		_logger << "Simple UI being used and has been successfully initialized";
 	}
@@ -130,11 +132,11 @@ namespace UI
 					chartoint = _character - 48;	//convert char to int
 					if (chartoint == 3)
 					{
-						if (payui.findexistingPurchase(username))
+						if (payui->findexistingPurchase(username))
 						{
 							break;
 						}
-						payui.displayItems(username);
+						payui->displayItems(username);
 					}
 				}
 				catch (...)
@@ -184,5 +186,3 @@ namespace UI
 		else;
 	}
 }
-
-

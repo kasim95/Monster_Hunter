@@ -3,29 +3,27 @@
 #include <vector>
 #include <iostream>
 
-#include "../Domain/Shop/ShopHandler.hpp"
+// #include "../Domain/Shop/ShopHandler.hpp"
+#include "PaymentUIHandler.hpp"
 #include "../Domain/Shop/ShopMenu.hpp"
 
 namespace UI
 {
-	class PaymentUI
+	class PaymentUI : public PaymentUIHandler
 	{
 	public:
 		PaymentUI();
-		~PaymentUI() = default;
-		bool purchaseItem(std::string _username, std::string _itemid);
-		bool findexistingPurchase(std::string _username);
-		void displayItems(std::string _username);
-	private:
-		Domain::Shop::ShopHandler * shop;
+		~PaymentUI() noexcept override;
+		bool purchaseItem(std::string _username, std::string _itemid) override;
 	};
 
 	inline PaymentUI::PaymentUI()
 	{
-		Domain::Shop::ShopHandler * _shop = new Domain::Shop::ShopMenu();
-		shop = _shop;
+		shop = new Domain::Shop::ShopMenu();
 	}
 
+	inline PaymentUI::~PaymentUI() noexcept
+	{}
 
 	inline bool PaymentUI::purchaseItem(std::string _username, std::string _itemid)
 	{
@@ -42,7 +40,7 @@ namespace UI
 				}
 			}
 			std::cout << "\n*************************\n";
-			std::cout << "CSUF Payment Service\n";
+			std::cout << "Monster Hunter Payment Service\n";
 			std::cout << "\nEnter your credit card no: ";
 			std::cin.ignore();
 			std::cin.getline(creditcardno, 11);
@@ -64,23 +62,5 @@ namespace UI
 		{
 			return false;
 		}
-	}
-	inline bool PaymentUI::findexistingPurchase(std::string _username)
-	{
-		return shop->findPurchaseByName(_username);
-	}
-	inline void PaymentUI::displayItems(std::string _username)
-	{
-		std::vector<Domain::Shop::item> items = shop->getItems();
-		for (unsigned i = 0; i < items.size(); ++i)
-		{
-			std::cout << "Item available for purchase\n" << i << " : " << items[i].item_name << " | Price: $9.99" << std::endl;
-		}
-		unsigned choice;
-		std::cout << "Select the item number you want to purchase: ";
-		std::cin >> choice;
-		if (purchaseItem(_username, items[choice].item_id)) std::cout << "Successfully purchased the item\n";
-		else std::cout << "Purchase process didn't go through\n";
-
 	}
 }

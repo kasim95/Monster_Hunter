@@ -143,7 +143,6 @@ namespace UI
 		std::cout << "\nCONTROLS: G - Attack\n";
 	}
 
-
 	void PlayGame::weapon_drop(int monster_type)
 	{
 		char _input3 = '_';

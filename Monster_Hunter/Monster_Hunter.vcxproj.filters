@@ -120,6 +120,9 @@
     <ClInclude Include="Domain\Game\MapHandler.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="UI\PaymentUIHandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

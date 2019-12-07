@@ -5,7 +5,7 @@
 #include "../TechnicalServices/Logging/LoggerHandler.hpp"
 #include "../TechnicalServices/Persistence/PersistenceHandler.hpp"
 #include "../UI/UserInterfaceHandler.hpp"
-#include "../UI/PaymentUI.hpp"
+#include "../UI/PaymentUIHandler.hpp"
 
 namespace UI
 {
@@ -25,6 +25,7 @@ namespace UI
 		std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _persistentData;
 
 		TechnicalServices::Logging::LoggerHandler & _logger = *_loggerPtr;
-		UI::PaymentUI payui;
+		// UI::PaymentUIHandler payui;
+		std::unique_ptr<UI::PaymentUIHandler> payui;
 	};
 }

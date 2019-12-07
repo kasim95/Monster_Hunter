@@ -165,6 +165,7 @@
     <ClInclude Include="Domain\Shop\ShopHandler.hpp" />
     <ClInclude Include="Domain\Shop\ShopMenu.hpp" />
     <ClInclude Include="Domain\Game\MapHandler.hpp" />
+    <ClInclude Include="UI\PaymentUIHandler.hpp" />
     <ClInclude Include="TechnicalServices\Payment\MastercardPaymentService.hpp" />
     <ClInclude Include="TechnicalServices\Payment\PaymentServiceHandler.hpp" />
     <ClInclude Include="UI\PaymentUI.hpp" />
