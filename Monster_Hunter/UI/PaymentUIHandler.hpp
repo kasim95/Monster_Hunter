@@ -12,7 +12,7 @@ namespace UI
 	public:
 		PaymentUIHandler() = default;
 		virtual ~PaymentUIHandler() noexcept;
-		virtual bool purchaseItem(std::string _username, std::string _itemid);
+		virtual bool purchaseItem(std::string _username, std::string _itemid) = 0;
 		bool findexistingPurchase(std::string _username);
 		void displayItems(std::string _username);
 	protected:
@@ -21,11 +21,6 @@ namespace UI
 
 	inline PaymentUIHandler::~PaymentUIHandler() noexcept
 	{}
-
-	inline bool PaymentUIHandler::purchaseItem(std::string _username, std::string _itemid)
-	{
-		return false;
-	}
 
 	inline bool PaymentUIHandler::findexistingPurchase(std::string _username)
 	{
