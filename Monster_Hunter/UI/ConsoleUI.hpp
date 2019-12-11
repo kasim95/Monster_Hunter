@@ -25,7 +25,6 @@ namespace UI
 		std::unique_ptr<TechnicalServices::Persistence::PersistenceHandler> _persistentData;
 
 		TechnicalServices::Logging::LoggerHandler & _logger = *_loggerPtr;
-		// UI::PaymentUIHandler payui;
 		std::unique_ptr<UI::PaymentUIHandler> payui;
 	};
 }

@@ -24,7 +24,6 @@ namespace Domain::Game
 		Character() = default;
 		Character(const Character & original) = default;	//Copy const
 		Character(Character && original) = default;			//Move Constructor can be removed later
-		//~Character() = default;					//Virtual Destructor
 		virtual ~Character() noexcept = 0;
 		void equip_Weapon(double value, double value_health);
 		virtual void calculate_damage() = 0;					//Virtual function that is defined in the individual character classes. Uses the Information Expert GRASP pattern.

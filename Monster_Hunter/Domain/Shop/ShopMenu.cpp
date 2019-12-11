@@ -1,7 +1,7 @@
 #include "ShopMenu.hpp"
 
-#include "../../TechnicalServices/Payment/VisaPaymentService.hpp"
-// #include "../../TechnicalServices/Payment/MastercardPaymentService.hpp"
+// #include "../../TechnicalServices/Payment/VisaPaymentService.hpp"
+#include "../../TechnicalServices/Payment/MastercardPaymentService.hpp"
 
 
 namespace Domain::Shop
@@ -11,7 +11,7 @@ namespace Domain::Shop
 
 	ShopMenu::ShopMenu()
 	{
-		payservice = new TechnicalServices::Payment::VisaPaymentService();
+		payservice = new TechnicalServices::Payment::MastercardPaymentService();		// Protected Variations GRASP pattern to change between VisaPaymentService and MastercardPaymentService
 		_items = {
 			{"100A", "Character_Mage"}
 		};

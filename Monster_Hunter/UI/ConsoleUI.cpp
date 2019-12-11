@@ -14,12 +14,7 @@
 #include "../TechnicalServices/Logging/SimpleLogger.hpp"
 #include "../TechnicalServices/Persistence/SimpleDB.hpp"
 #include "PlayGame.hpp"
-#include "../Domain/Game/Character.hpp"
-#include "../Domain/Game/Assassin.hpp"
-#include "../Domain/Game/Warrior.hpp"
-#include "../Domain/Game/Mage.hpp"
 #include "../Domain/Game/GameSession.hpp"
-#include "../Domain/Game/CharacterCreator.hpp"
 #include "PaymentUI.hpp"
 
 namespace UI
@@ -87,7 +82,7 @@ namespace UI
 
 			selectedRole = roleLegalValues[menuSelection];
 
-			if (_accounts->isAuthenticated({ userName, passPhrase, {selectedRole} }))
+			if (_accounts->isAuthenticated({ userName, passPhrase, {selectedRole} }))		// Controller GRASP pattern to handle responsibility for login user use case sceanrio, Also serves as an entry point to Domain layer
 			{
 				username = userName;
 				_logger << "Login Successful for \"" + userName + "\" as role \"" + selectedRole + "\"";
@@ -119,8 +114,6 @@ namespace UI
 		if (selectedCommand == "Start Game")
 		{
 			_logger << "Player Selection Screen";
-			
-			//Implemented character selection in ConsoleUI Controller to control the overall flow of the game 
 			char _character;
 			int chartoint = 100;
 			do
@@ -145,14 +138,6 @@ namespace UI
 				}
 			} while (!(chartoint == 1 || chartoint == 2));
 			_logger << "Game Started";
-			//
-			/*
-			UI::PlayGame * playgame;
-			if (chartoint == 3) playgame = new UI::PlayGame(new Domain::Game::Mage());
-			else if (chartoint == 2) playgame = new UI::PlayGame(new Domain::Game::Warrior());
-			else playgame = new UI::PlayGame(new Domain::Game::Assassin());
-			*/
-			//
 			// Character Factory Pattern
 			UI::PlayGame * playgame = new UI::PlayGame(chartoint);
 			//
@@ -181,7 +166,6 @@ namespace UI
 		{
 			_logger << "Displaying Help";
 			//enter code to show help
-			//incomplete
 		}
 		else;
 	}

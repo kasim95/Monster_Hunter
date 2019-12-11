@@ -14,7 +14,7 @@ namespace Domain::AccountManagement
 		AccountManagementHandler(AccountManagementHandler && original) = default;
 		virtual ~AccountManagementHandler() noexcept = 0;
 		
-		virtual bool isAuthenticated(const UserCredentials & credentials) = 0;
+		virtual bool isAuthenticated(const UserCredentials & credentials) = 0;				// Controller GRASP pattern handles login responsibility
 	
 	protected:
 		AccountManagementHandler & operator=(const AccountManagementHandler & rhs) = default;

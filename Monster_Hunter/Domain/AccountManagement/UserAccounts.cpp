@@ -19,11 +19,11 @@ namespace Domain::AccountManagement
 		_logger << "UserAccounts shutdown successfully";
 	}
 
-	bool UserAccounts::isAuthenticated(const UserCredentials & credentials)
+	bool UserAccounts::isAuthenticated(const UserCredentials & credentials)		// Controller GRASP pattern to handle responsibility for login use case scenario
 	{
 		try
 		{
-			UserCredentials credentialsFromDB = _perssistentData->findCredentialsByName(credentials.userName);
+			UserCredentials credentialsFromDB = _perssistentData->findCredentialsByName(credentials.userName);			// uses SimpleDB to verify the login credentials
 			if (credentials.userName == credentialsFromDB.userName
 				&& credentials.passPhrase == credentialsFromDB.passPhrase
 				&& std::any_of(credentialsFromDB.roles.cbegin(), credentialsFromDB.roles.cend(),

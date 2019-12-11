@@ -42,7 +42,6 @@ namespace Domain::Game
 
 	bool GameSessionHandler::equip_weapon(double weapon_attributes)
 	{
-		//player_character->set_weapon_attributes(weapon_attributes);
 		player_character->equip_Weapon(weapon_attributes, 0);
 		player_character->calculate_damage();
 		return true;

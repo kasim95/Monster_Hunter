@@ -6,8 +6,8 @@ namespace Domain::Game
 {
 	GameSession::GameSession(std::string characterName)
 	{
-		theCreator = Domain::Game::CharacterCreator::createCreator(characterName);
-		player_character = theCreator->createCharacter();
+		theCreator = Domain::Game::CharacterCreator::createCreator(characterName); //polymorphism grasp pattern is used with an abstract factory pattern to create one of the three factory creators
+		player_character = theCreator->createCharacter();							//The Factory creator then creates an instance of the selected Character //Creator GRASP pattern to handle the responsibility of creating an instance of one of the three Character derived classes
 
 		player_character->calculate_damage();				//Information Expert GRASP pattern is used here. 
 		time1 = clock();									// calculate_damage is located in the Character class since that is where all the information is stored.
@@ -87,7 +87,6 @@ namespace Domain::Game
 		monster_type = 3 for strong monster
 		monster_type = 4 for dragon monster
 		*/
-		//later implement battle log message for each attack
 		double char_health = player_character->get_current_health();
 		double char_damage = player_character->get_damage();
 		if (monster_type == 1)

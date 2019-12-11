@@ -1,4 +1,3 @@
-//#include "pch.h"
 #include "SimpleDB.hpp"
 #include "../Logging/SimpleLogger.hpp"
 #include "PersistenceHandler.hpp"

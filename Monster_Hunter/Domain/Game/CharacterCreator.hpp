@@ -37,7 +37,7 @@ namespace Domain::Game
 		}
 	};
 	
-	inline CharacterCreator * CharacterCreator::createCreator(std::string characterType)
+	inline CharacterCreator * CharacterCreator::createCreator(std::string characterType)		//static function returns a factory creator which in turn is used to create an instance of the Character
 	{
 		if (characterType == "Assassin") return new AssassinCreator();
 		else if (characterType == "Warrior") return new WarriorCreator();

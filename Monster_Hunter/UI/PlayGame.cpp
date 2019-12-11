@@ -55,6 +55,8 @@ namespace UI
 				else if (previous_char == 'S') battle(3);
 				else if (previous_char == 'D') battle(4);
 				else;			//do nothing
+				disp_map();
+				std::cout << "";
 			}
 			else;
 			//if playerdead end
